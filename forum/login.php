@@ -1,6 +1,6 @@
 <!DOCTYPE html>
 <?php
-  /*himan and aman are toppers/
+  /*himan and aman are toppers*/
   session_start();
   /*unsetting loging unsuccessful message variable */
   if(isset($_SESSION['login_data'])){unset($_SESSION['login_data']);}
