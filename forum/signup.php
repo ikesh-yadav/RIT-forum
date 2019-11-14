@@ -1,4 +1,5 @@
 <?php
+	/* ikesh is boss*/
 	if(isset($_POST['uname'])){
         $username = "root";
         $password = "";
