@@ -1,5 +1,5 @@
 <?php
-	/* ikesh is boss*/
+	/* ikesh and himan are bosses*/
 	if(isset($_POST['uname'])){
         $username = "root";
         $password = "";
