@@ -37,8 +37,8 @@
 				echo "<script type='text/javascript'>alert('signup unsuccesful');</script>";
 				echo mysqli_error($con);
 			}
+		}
 	}
-}
 ?>
 <html>
 <head>
