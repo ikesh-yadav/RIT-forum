@@ -1,8 +1,4 @@
 <?php
-	$hide="";
-	if(isset($_POST["faculty"])){
-		$hide="hidden";
-	}
 	if(isset($_POST['uname'])){
         $username = "root";
         $password = "";
@@ -32,13 +28,14 @@
 		}else{
 			$semester=trim($_POST['semester']);
 			$section=trim($_POST['section']);
-			$sql = "INSERT INTO `student`(`id`, `username`, `password`, `dob`,`deparment`, `semester`,`section`,`email`) VALUES ('$id','$name','$password','$dob','$department','$semester','$section','$email')";
+			$sql = "INSERT INTO `student`(`id`, `username`, `password`, `dob`,`department`, `semester`,`section`,`email`) VALUES ('$id','$name','$password','$dob','$department','$semester','$section','$email')";
 			if(mysqli_query($con,$sql)){
 				echo "<script type='text/javascript'>alert('signup succesful');</script>";
 				header("Location:login.php");
 				die();
 			}else{
 				echo "<script type='text/javascript'>alert('signup unsuccesful');</script>";
+				echo mysqli_error($con);
 			}
 	}
 }
@@ -47,6 +44,16 @@
 <head>
 	<link rel="stylesheet" type="text/css" href="common.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script>
+		function facultyCheck(){
+			checkBox= document.getElementById('facultyCheckBox');
+			if(checkBox.checked==true){
+				document.getElementById('studentOnlyDetails').style.display="none";
+			}else{
+				document.getElementById('studentOnlyDetails').style.display="block";
+			}
+		}
+	</script>
 </head>
 <body>
 	<div style ="height: 5%;background-color: rgb(0, 0, 51);font-size:0px;">
@@ -61,10 +68,11 @@
 			<label for="psw"><b>Password</b></label><input type="password" placeholder="Enter Password" name="psw" required>
 			<label for="dob"><b>Date of Birth</b></label><input type="date" name="dob" required>
 			<label for="department"><b>Department</b></label><input type="text" placeholder="Enter Department" name="department" required>
-			<label for="section"><b>Section</b></label><input type="text" placeholder="Enter section" name="section" <?php echo $hide; ?>>
-			<label for="semester"><b>Semester</b></label><input type="text" placeholder="Enter semester" name="semester" <?php echo $hide; ?>>
-			
-			<label><input type="checkbox" name="faculty" unchecked> Faculty</label>
+			<div id="studentOnlyDetails">
+				<label for="section"><b>Section</b></label><input type="text" placeholder="Enter section" name="section" >
+				<label for="semester"><b>Semester</b></label><input type="text" placeholder="Enter semester" name="semester">
+			</div>
+			<label><input type="checkbox" id="facultyCheckBox" name="faculty" onclick="facultyCheck()" unchecked>Faculty</label>
 			<button type="submit">Signup</button>
 			<a href="login.php"><input type="button" value="Login"></input></a> 
 		</div>

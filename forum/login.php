@@ -46,21 +46,17 @@
         }else{
           /*if the login user is a student*/
           $faculty=0;
-          $query = "SELECT username,password,semester,section FROM students WHERE id='".$id."'";
+          $query = "SELECT username,password FROM student WHERE id='".$id."'";
           /* Execute the statement */
           if ($result = mysqli_query($link, $query)) {
             $row = mysqli_fetch_row($result);
             $nam=$row[0];
             $retrevied_password=$row[1];
-            $sem=$row[2];
-            $sec=$row[3];
             /* free result set */
             mysqli_free_result($result);
             }else{
                 printf("Error: %s.\n", mysqli_error($link));
             }
-            $_SESSION['sem']=$sem;
-            $_SESSION['sec']=$sec;
         }
         /*setting common session data*/
         $_SESSION['faculty'] = $faculty;
