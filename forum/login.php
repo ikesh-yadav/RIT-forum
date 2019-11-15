@@ -33,7 +33,7 @@
         if(isset($_POST["faculty"])){
           /*if the login user is a faculty*/
           $faculty=1;
-          $query = "SELECT name,password FROM faculty WHERE id='".$id."'";
+          $query = "SELECT username,password FROM faculty WHERE id='".$id."'";
           /* Execute the statement */
           if ($result = mysqli_query($link, $query)) {
             $row = mysqli_fetch_row($result);
@@ -48,7 +48,7 @@
         }else{
           /*if the login user is a student*/
           $faculty=0;
-          $query = "SELECT name,password,sem,sec FROM students WHERE usn='".$id."'";
+          $query = "SELECT username,password,semester,section FROM students WHERE id='".$id."'";
           /* Execute the statement */
           if ($result = mysqli_query($link, $query)) {
             $row = mysqli_fetch_row($result);
