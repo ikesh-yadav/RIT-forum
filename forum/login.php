@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+  /*day2*/
   /*himan and ikku are the only toppers of toppers*/
   session_start();
   /*unsetting loging unsuccessful message variable */
