@@ -1,7 +1,5 @@
 <!DOCTYPE html>
 <?php
-  /*day111111111111111111111111111111111111111111111222222222222222222222233333333333333333333333333333 */
-  /*himan and ikku are the only toppers of toppers*/
   session_start();
   /*unsetting loging unsuccessful message variable */
   if(isset($_SESSION['login_data'])){unset($_SESSION['login_data']);}
