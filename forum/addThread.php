@@ -1,5 +1,29 @@
 <?php
-    $categoryChoice1="himanshu is a boss";
+  function categoryAsDropDown(){
+    $categoryChoice="<select>";
+    $username = "root";
+    $password = "";
+    $server="localhost";
+    $db_name="data";
+    /*try to connect to MySQL database */
+    $con = mysqli_connect($server, $username, $password, $db_name);
+    if (mysqli_connect_errno()) {
+        printf("Connect failed: %s\n", mysqli_connect_error());
+        exit();
+    }
+    $sql="select name from category;";
+    if($result=$con->query($sql)){
+      if ($result->num_rows> 0) {
+          while($row = $result->fetch_assoc()) {
+            $categoryChoice=$categoryChoice."<option>".$row['name']."</option>";
+          }
+      }
+    }else{$categoryChoice1="<option>go an die</option>";}
+    $result->close();
+    $con->close();
+    $categoryChoice=$categoryChoice."</select>";
+    return $categoryChoice;
+  }
 ?>
 <!DOCTYPE html>
 <html>
@@ -7,7 +31,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="common.css">
   <script>
-      function add_option(name, value) {
+      function addCategoryDropDown() {
         /*creating a label to append radiobutton and textfield*/
         var label = document.createElement("label");
         /*creating a radio button and textfield for new option*/
@@ -56,9 +80,9 @@
     <input type="text" id="threadName" name="threadName" placeholder="Enter thread name"/><br>
     <input type="textarea" id="threadDescription" name="threadDescription" placeholder="Enter Description"/>
     <div>
-        <?php echo $categoryChoice1;?>
+        <?php echo categoryAsDropDown();?>
     </div>
-    <input type="button" id="categoryDropDownAdd" style="display:inline" onclick="addCategoryDropDown()" value="add category"/>
+    <input type="button" id="categoryDropDownAdd" style="display:inline" onclick="categoryAsDropDown()" value="add category"/>';?>
     <input type="submit" class="toDisable" attr="subbtn" onclick="duplicatePageJS()" value="CREATE" />
 </form>
 <script type="text/javascript" src="editability.js"></script>
