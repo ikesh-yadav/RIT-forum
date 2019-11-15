@@ -68,10 +68,7 @@
   <div style="font-size: 30px;width: 100%;text-align: center;color:white"><b>Exam</b></div>
   <br>
   <div style="display:block;width:100%;background-color: rgb(0, 0, 51);visibility: visible;" >
-    <div id="topNavigation" class="tab" style="width:100%; display: inline-block;background-color:rgba(204, 0, 102, 0.63);color:white">
-    <!--div in which the tabs for sections are added-->
-    <input type="button" class="toDisable" id="tabLinkAdd" style="float:right" onclick="addTab()" value="Add Section"/>
-    <div width style="display:inline-block;font-size:18px;float:right;" id="timeRemaining"></div>    
+    <div id="topNavigation" class="tab" style="width:100%; display: inline-block;background-color:rgba(204, 0, 102, 0.63);color:white">  
     </div>
   </div>
 </div>
@@ -82,17 +79,12 @@
     <div>
         <?php echo categoryAsDropDown();?>
     </div>
-    <input type="button" id="categoryDropDownAdd" style="display:inline" onclick="categoryAsDropDown()" value="add category"/>';?>
+    <input type="button" id="categoryDropDownAdd" style="display:inline" onclick="categoryAsDropDown()" value="add category"/>
     <input type="submit" class="toDisable" attr="subbtn" onclick="duplicatePageJS()" value="CREATE" />
 </form>
 <script type="text/javascript" src="editability.js"></script>
-<form action='welcome.php' method='POST'><input type='submit' class='submitbtn' value='Go Back'/></form>"
+<hr>
+<form action='welcome.php' method='POST'><input type='submit' class='submitbtn' value='Go Back'/></form>
 <form action='logout.php' method='POST'><input type='submit' class="submitbtn" value='Log Out'/></form>
-<script>
-  var faculty=<?php echo $_SESSION['faculty'];?>;
-  if (faculty){
-    document.getElementById('timeRemaining').style.display="none";
-  }
-</script>
 </body>
 </html>
