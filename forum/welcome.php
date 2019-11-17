@@ -15,11 +15,11 @@
   if(!isset($_SESSION['logged_in'])){
     header("Location: login.php");
     exit();
-  }else{
+  }
+  else {
     /*retrieve data from session*/
     $id=$_SESSION['id'];
-    $nam=$_SESSION['name'];
-    $faculty=$_SESSION['faculty'];
+    $nam=$_SESSION['username'];
     /*data for mysql connect*/
     $username = "root";
     $password = "";
