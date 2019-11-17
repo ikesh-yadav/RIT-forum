@@ -93,6 +93,8 @@ table, th, td {
     display: none;
 }
 #page-container{
+    width:100%;
+    /* */
 }
 #left-tab{
     height:75%;
