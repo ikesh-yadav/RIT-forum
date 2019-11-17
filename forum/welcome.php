@@ -15,16 +15,16 @@
   if(!isset($_SESSION['logged_in'])){
     header("Location: login.php");
     exit();
-  }else{
+  }
+  else {
     /*retrieve data from session*/
     $id=$_SESSION['id'];
-    $nam=$_SESSION['name'];
-    $faculty=$_SESSION['faculty'];
+    $nam=$_SESSION['username'];
     /*data for mysql connect*/
     $username = "root";
     $password = "";
     $server="localhost";
-    $db_name="forum";
+    $db_name="new_forum";
 
     /* connect to MySQL database */
     $link = mysqli_connect($server, $username, $password, $db_name);
@@ -32,7 +32,7 @@
         printf("Connect failed: %s\n", mysqli_connect_error());
         exit();
     }
-    echo "WELCOME, ".$_SESSION['name'];
+    echo "WELCOME, ".$_SESSION['username'];
     /*displaying tests*/
 
     echo "<form action='logout.php' method='POST'><input type='submit' class='submitbtn' value='Log Out'/></form>";
