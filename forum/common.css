@@ -85,14 +85,24 @@ ol li {
     border-radius: 10px;
 }
 table, th, td {
-    border: 1px solid black;
     width: auto;
     font-size: 20px;
-    padding : 20px;
-    margin-left:auto; 
     margin-right:auto;
-    margin-top:5%;
 }
 .toEnable{
     display: none;
+}
+#page-container{
+}
+#left-tab{
+    height:75%;
+    width:29%;
+    display:inline-block;
+    border-right: 1px solid black;
+    margin-left:5px; 
+    margin-right:5px;
+}
+#content{
+    width:70%;
+    display:inline-block;
 }
