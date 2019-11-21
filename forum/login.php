@@ -31,7 +31,7 @@
         $pass=trim($_POST["password"]);
 
       
-        $query = "SELECT username,password FROM user WHERE id='".$id."'";
+        $query = "SELECT username,hashed_password FROM user WHERE id='".$id."'";
         /* Execute the statement */
         if ($result = mysqli_query($link, $query)) {
           $row = mysqli_fetch_row($result);
