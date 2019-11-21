@@ -59,7 +59,7 @@
     //output data of each row
     while($row = $result->fetch_assoc()) {
         //echo "<td><form id=category".$row['id']." method='post' action='viewCategory.php'><input type='hidden' name='categoryId' value='".$row['id']."'></form><a href='#' onclick='document.forms['category".$row['id']."].submit();'>".$row['name']."</a></td></tr>";
-        echo "<tr><td><form id=thread".$row['id']." method='get' action='viewThread.php'><input type='hidden' name='categoryId' value='".$row['id']."'></form><a href='#' onclick='document.forms['thread".$row['id']."].submit();'>".$row['id']."<br>".$row['subject']."<br>".$row['created']."<br>".$row['user_id']."<br>".$row['likes']."<br>".$row['dislikes']."<br>"."</a></td></tr>";
+        echo "<tr><td><form id=thread".$row['id']." method='get' action='viewThread.php'><input type='hidden' name='threadId' value='".$row['id']."'></form><a href='#' onclick='document.forms[\"thread".$row['id']."\"].submit();'>".$row['id']."<br>".$row['subject']."<br>".$row['created']."<br>".$row['user_id']."<br>".$row['likes']."<br>".$row['dislikes']."<br>"."</a></td></tr>";
     }
     mysqli_free_result($result);
     }else echo "<tr><td>No categories</td></tr>";

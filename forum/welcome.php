@@ -19,7 +19,6 @@
   else {
     /*retrieve data from session*/
     $id=$_SESSION['id'];
-    $nam=$_SESSION['username'];
     /*data for mysql connect*/
     $username = "root";
     $password = "";
@@ -32,7 +31,7 @@
         printf("Connect failed: %s\n", mysqli_connect_error());
         exit();
     }
-    echo "WELCOME, ".$_SESSION['name'];
+    echo "WELCOME, ".$_SESSION['username'];
     /*displaying categories*/
     $sql = "SELECT name,id FROM category WHERE status=0";
       $result=$link->query($sql);
