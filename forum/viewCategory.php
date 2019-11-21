@@ -14,10 +14,11 @@
   </div>
 <?php
   //values required to setup connect
-  if(!isset($_SESSION['logged_in'])){
+  /*if(!isset($_SESSION['logged_in'])){
     header("Location: login.php");
     exit();
   }else{
+    */
     /*retrieve data from session*/
     $id=$_SESSION['id'];
     /*data for mysql connect*/
@@ -69,7 +70,7 @@
     echo "<form action='logout.php' method='POST'><input type='submit' class='submitbtn' value='Log Out'/></form>";
     
     mysqli_close($link);
-  }
+  //}
 ?>
 </body>
 </html>
