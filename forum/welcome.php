@@ -41,7 +41,7 @@
       if ($result && $result->num_rows> 0) { 
       //output data of each row
         while($row = $result->fetch_assoc()) {
-          echo "<td><form id=category".$row['id']." method='post' action='viewCategory.php'><input type='hidden' name='categoryId' value='".$row['id']."'></form><a href='#' onclick='document.forms[\"category".$row['id']."\"].submit();'>".$row['name']."</a></td></tr>";
+          echo "<td><form id=category".$row['id']." method='get' action='viewCategory.php'><input type='hidden' name='categoryId' value='".$row['id']."'></form><a href='#' onclick='document.forms[\"category".$row['id']."\"].submit();'>".$row['name']."</a></td></tr>";
         }
         mysqli_free_result($result);
       }else echo "<tr><td>No categories</td></tr>";
