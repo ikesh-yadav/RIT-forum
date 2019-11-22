@@ -1,37 +1,27 @@
 <?php
+  include_once('mysql.php');
   session_start();
 ?>
 <html>
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Forum</title>
   <link rel="stylesheet" type="text/css" href="common.css">
 </head>
 <body>
-  <div style ="height: 5%;background-color: rgb(0, 0, 51);font-size:0px;">
-    <div style="font-size: 30px;width: 100%;text-align: center;color:white"><b>Forum</b></div>
-  </div>
 <?php
+  echo '<div id="header" style ="height:5%;width:100%;background-color: rgb(0, 0, 51);font-size:0px;">';
+  echo '<div id="title" style="width:100%;text-align:center;color:white"><b>Forum</b></div>';
+  echo '<div id="navigation" style="width:100%;"><span style="font-size:15px;float:right;">WELCOME, '.$_SESSION['username'].'</span></div>';
+  echo '</div>';
+
   //values required to setup connect
   if(!isset($_SESSION['logged_in'])){
     header("Location: login.php");
     exit();
-  }
-  else {
+  }else{
     /*retrieve data from session*/
     $id=$_SESSION['id'];
-    /*data for mysql connect*/
-    $username = "root";
-    $password = "";
-    $server="localhost";
-    $db_name="new_forum";
-
-    /* connect to MySQL database */
-    $link = mysqli_connect($server, $username, $password, $db_name);
-    if (mysqli_connect_errno()){
-        printf("Connect failed: %s\n", mysqli_connect_error());
-        exit();
-    }
-    echo "WELCOME, ".$_SESSION['username'];
     /*displaying categories*/
     $sql = "SELECT name,id FROM category WHERE status=0";
       $result=$link->query($sql);

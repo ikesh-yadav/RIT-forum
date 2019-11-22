@@ -1,4 +1,5 @@
 <?php
+  include_once('mysql.php');
   session_start();
   var_dump($_POST);
   var_dump($_SESSION);
@@ -20,18 +21,7 @@
   }else{
     /*retrieve data from session*/
     $id=$_SESSION['id'];
-    /*data for mysql connect*/
-    $username = "root";
-    $password = "";
-    $server="localhost";
-    $db_name="new_forum";
 
-    /* connect to MySQL database */
-    $link = mysqli_connect($server, $username, $password, $db_name);
-    if (mysqli_connect_errno()){
-        printf("Connect failed: %s\n", mysqli_connect_error());
-        exit();
-    }
     echo "WELCOME, ".$_SESSION['username'];
     /*displaying categories*/
     $sql = "SELECT id,name FROM category WHERE status=0";

@@ -1,5 +1,4 @@
 <?php
-  include_once('mysql.php');
   session_start();
   var_dump($_POST);
   var_dump($_SESSION);
@@ -21,9 +20,19 @@
   }else{
     */
     /*retrieve data from session*/
-    $id=$_SESSION['id'];
-    
-    echo "WELCOME, ".$_SESSION['username'];
+    if(isset($_SESSION['id'])){$id=$_SESSION['id'];echo "WELCOME, ".$username; }else $id="ANONYMOUS";
+    /*data for mysql connect*/
+    $username = "root";
+    $password = "";
+    $server="localhost";
+    $db_name="new_forum";
+
+    /* connect to MySQL database */
+    $link = mysqli_connect($server, $username, $password, $db_name);
+    if (mysqli_connect_errno()){
+        printf("Connect failed: %s\n", mysqli_connect_error());
+        exit();
+    }
     /*displaying categories*/
     $sql = "SELECT id,name FROM category WHERE status=0";
     $result=$link->query($sql);
@@ -41,16 +50,16 @@
     echo "</table>";
     echo "</div>";
     /*displaying threads*/
-    $sql = "SELECT `id`,`subject`,`created`,`user_id`,`likes`,`dislikes` FROM thread WHERE status=0";
+    $sql = "SELECT `id`,`first_name`,`last_name`,`created`,`email` FROM user WHERE status=0";
     $result=$link->query($sql);
     echo '<div id="content">';
     echo '<table id="conetnt-tab">';
-    echo '<tr><td>Threads</td></tr>';
+    echo '<tr><td>Users</td></tr>';
     if ($result && $result->num_rows> 0) { 
     //output data of each row
     while($row = $result->fetch_assoc()) {
         //echo "<td><form id=category".$row['id']." method='post' action='viewCategory.php'><input type='hidden' name='categoryId' value='".$row['id']."'></form><a href='#' onclick='document.forms['category".$row['id']."].submit();'>".$row['name']."</a></td></tr>";
-        echo "<tr><td><form id=thread".$row['id']." method='get' action='viewThread.php'><input type='hidden' name='threadId' value='".$row['id']."'></form><a href='#' onclick='document.forms[\"thread".$row['id']."\"].submit();'>".$row['id']."<br>".$row['subject']."<br>".$row['created']."<br>".$row['user_id']."<br>".$row['likes']."<br>".$row['dislikes']."<br>"."</a></td></tr>";
+        echo "<tr><td><form id=user".$row['id']." method='get' action='viewUser.php'><input type='hidden' name='userId' value='".$row['id']."'></form><a href='#' onclick='document.forms[\"user".$row['id']."\"].submit();'>".$row['id']."<br>".$row['first_name']."<br>".$row['last_name']."<br>".$row['email']."<br>".$row['created']."<br></a></td></tr>";
     }
     mysqli_free_result($result);
     }else echo "<tr><td>No categories</td></tr>";

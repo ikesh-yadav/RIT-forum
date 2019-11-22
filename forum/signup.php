@@ -1,15 +1,7 @@
 <?php
+	include_once('mysql.php');
 	if(isset($_POST['username'])){
-        $username = "root";
-        $password = "";
-        $server="localhost";
-        $db_name="new_forum";
-        /*try to connect to MySQL database */
-        $con = mysqli_connect($server, $username, $password, $db_name);
-        if (mysqli_connect_errno()) {
-            printf("Connect failed: %s\n", mysqli_connect_error());
-            exit();
-        }
+		
 		$name=trim($_POST['username']);
 		$id=trim($_POST['id']);
 		$password=trim($_POST['password']);

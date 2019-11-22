@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <?php
+  include_once('mysql.php');
   session_start();
   /*unsetting loging unsuccessful message variable */
   if(isset($_SESSION['login_data'])){unset($_SESSION['login_data']);}
@@ -17,16 +18,7 @@
     }
     else{
       if(isset($_POST['id']) && isset($_POST['password'])){
-        $username = "root";
-        $password = "";
-        $server="localhost";
-        $db_name="new_forum";
-        /*trying to connect to MySQL database */
-        $link = mysqli_connect($server, $username, $password, $db_name);
-        if (mysqli_connect_errno()) {
-            printf("Connect failed: %s\n", mysqli_connect_error());
-            exit();
-        }
+        
         $id=trim($_POST['id']);
         $pass=trim($_POST["password"]);
 
