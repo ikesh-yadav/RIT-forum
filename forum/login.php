@@ -58,6 +58,7 @@
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/en/thumb/5/5a/Ramaiah_Institutions_Logo.png/220px-Ramaiah_Institutions_Logo.png">
 </head>
 <body>
+
 <!--
 <div style ="height: 5%;background-color: rgb(0, 0, 51);font-size:0px;">
   <div style="font-size: 30px;width: 100%;text-align: center;color:white"><b>RIT FORUM</b></div>
@@ -74,6 +75,7 @@
 	    <a href="signup.php"><input type="button" value="Signup"></input></a>
       <div style="text-align:center"><//?php $login_status?></div>
     </div>
+
   -->
   <div class="wrapper">
   <div class="header">
