@@ -18,8 +18,8 @@
       <div id="createThreadButton"><a href="createThread.php">Create Thread</a></div>
       <div id="navigationButton"><?php echo $_SESSION['username']?>
         <ul>
-          <li><a href="viewUser.php">Acccount Information</a></li>
-          <li><a href="logout">Logout</a></li>
+          <li><form action="viewUser.php"><input type="submit" value="Acccount Information"></form></li>
+          <li><a href="logout.php"><input type="button" value="Logout"></a></li>
         </ul>
       </div>
     </div>
