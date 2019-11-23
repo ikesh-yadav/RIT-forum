@@ -9,20 +9,24 @@
   <link rel="stylesheet" type="text/css" href="common.css">
 </head>
 <body>
-
-<div class="flex-container">
-
-  <div id="header">
+  <div id="topbar">
+    <div id="title">
     <h1>Forum</h1>
-    <div id="navigation">
-      <div id="createThreadButton"><a href="createThread.php">Create Thread</a></div>
-      <div id="navigationButton"><?php echo $_SESSION['username']?>
-        <ul>
-          <li><form action="viewUser.php"><input type="submit" value="Acccount Information"></form></li>
-          <li><a href="logout.php"><input type="button" value="Logout"></a></li>
-        </ul>
-      </div>
+      <!--<a href="index.html">
+        <img src="developer.png" width=220px height=90px;>
+      </a>-->
     </div>
+    <nav class="menu">
+      <ul>
+        <li class="element"><a href="#">Something</a>
+          <ul>
+            <li><a href="createThread.php">Create Thread</a></li>
+            <li><a href="viewUser.php"><?php echo $_SESSION['username']?></a></li>
+            <li><a href="logout.php"><input type="button" value="Logout"></a></li>
+          </ul>
+        </li>
+      </ul>
+    </nav>
   </div>
   <?php
   //values required to setup connect
@@ -33,6 +37,8 @@
     /*retrieve data from session*/
     $id=$_SESSION['id'];
     /*displaying categories*/
+    echo '<div id="page-container">';
+    echo '<div id="left-tab">';
     $sql = "SELECT name,id FROM category WHERE status=0";
       $result=$link->query($sql);
       echo '<table id="categories">';
@@ -50,6 +56,7 @@
         mysqli_free_result($result);
       }else echo "<tr><td>No categories</td></tr>";
       echo "</table>";
+      echo "</div>";
     /*closing the connection to the mysql server created in the 'mysql.php' file*/
     mysqli_close($link);
   }
