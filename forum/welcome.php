@@ -18,11 +18,10 @@
     </div>
     <nav class="menu">
       <ul>
-        <li class="element"><a href="#">Something</a>
+        <li class="element"><a href="createThread.php">Create Thread</a></li>
+        <li class="element"><a href="viewUser.php"><?php echo $_SESSION['username']?></a>
           <ul>
-            <li><a href="createThread.php">Create Thread</a></li>
-            <li><a href="viewUser.php"><?php echo $_SESSION['username']?></a></li>
-            <li><a href="logout.php"><input type="button" value="Logout"></a></li>
+            <li><a href="logout.php">Logout</a></li>
           </ul>
         </li>
       </ul>
