@@ -4,16 +4,16 @@
       width: 100%;
     }
 }
+* {
+    box-sizing: border-box;
+    margin:0px;
+    padding:0px;
+    border:0px;
+    /*overflow: auto;*/
+}
 body{
     background-color: rgba(0, 0, 0, 0.055);
     margin:0px;
-}
-textarea{
-    box-sizing: border-box;
-    border-radius: 4px;
-    background-color:whitesmoke;
-    border:none;
-    resize: none;
 }
 /* Full-width input fields */
 input[type=text], input[type=password],input[type=date] {
@@ -27,12 +27,10 @@ input[type=text], input[type=password],input[type=date] {
 /* Set a style for all buttons */
 button, .submitbtn, input[attr="subbtn"] {
     display: block;
-    background-color: #4CAF50;
+    background-color:black;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
-    border: none;
-    cursor: pointer;
     width: 100%;
 }
 
@@ -56,7 +54,7 @@ button:hover {
 .tab{
     font-size: 0px;
 }
-.tablinks,#tabLinkAdd {
+.tablinks {
     border: none;
     border-width:0px;
     outline: none;
@@ -65,15 +63,7 @@ button:hover {
     font-size: 18px;
 }
 
-/* Style the active class, and buttons on mouse-over */
-.active, .tablinks:hover {
-    background-color: orange;
-    color: white;
-}
-#tabLinkAdd:hover{
-    background-color: rgb(94, 161, 114);
-    color: white;
-}
+/* Style the tables and buttons on mouse-over */
 table, th, td {
     width: auto;
     font-size: 20px;
@@ -97,8 +87,42 @@ table, th, td {
     display:inline-block;
 }
 #header{
-    width:100px;
-    padding-top:10px;
-    padding-bottom:10px;
-    background-color: black;
+    width:100%;
+    text-align: center;
+    min-height: 8%;
+    padding-right: 2%;
+    padding-left: 2%;
+    background-color:grey;
+    border-bottom: 1.5px solid black;
+    border-top: 3px solid greenyellow;
+}
+#navigation{
+    position: relative;
+    display:table-row;
+    background-color:rgba(82, 82, 82, 0.445);
+    display:inline-block;
+    float:right;
+    font-size:15px;
+}
+
+#navigation #navigationButton,#navigation h1{
+    display:inline-block;
+    padding:1%;
+    background-color: #f1f1f1;
+    width: 100px;
+    margin: 10px;
+    text-align: center;
+    line-height: 100%;
+    font-size: 30px;
+}
+#navigationbutton ul{
+    display:none;
+    list-style:none;
+}
+#navigationButton:hover > ul{
+    display:block;
+}
+h1{
+    float:left;
+    margin: 0px;
 }
