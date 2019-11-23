@@ -95,9 +95,8 @@ h1{
     font-size: 1.7em;
 }
 .categoryLinks:hover,.categoryLinks:hover>td>a{
-    background-color: white;
-    color:black;
-    border-radius: 7px;
+    background-color: #0084ff;
+    border-radius: 15px;
 }
 
 
@@ -138,6 +137,7 @@ body {
     float: left;
   }
   .element:hover {
+    opacity:0.8;
     border-bottom: 3px solid #0084ff;
     cursor: pointer;
     z-index: 1;
@@ -172,7 +172,6 @@ body {
     padding-left:1vw;
     padding-right:4vw;
     background-color: rgb(32, 38, 46);
-    border-bottom: 1px solid black;
     border-top: 2px solid #0084ff;
   }
   
