@@ -81,7 +81,7 @@
   <div class="header">
       <img src="https://www.easytourz.com/uploads/Businesslogo/1527234792.png" alt="msrit"/>
       <div class="mtitle"><b>RIT FORUM</b></div>
-    </div>
+  </div>
 
     <form class="login" method="post">
       <h2 style="text-align:center">LOGIN</h2>
@@ -107,6 +107,6 @@
         </footer>
       </div>
 
-  </form>
+  
 </body>
 </html>
