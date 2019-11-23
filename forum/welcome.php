@@ -6,7 +6,7 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Forum</title>
-  <link rel="stylesheet" type="text/css" href="common.css">
+  <link rel="stylesheet" type="text/css" href="newcss.css">
 </head>
 <body>
   <div id="topbar">
@@ -19,8 +19,9 @@
     <nav class="menu">
       <ul>
         <li class="element"><a href="createThread.php">New thread</a></li>
-        <li class="element"><a href="viewUser.php"><?php echo $_SESSION['username']?></a>
+        <li class="element"><img src="user-icon.jpeg" width="30px" height="30px" alt="image not found"></img>
           <ul>
+            <li><a href="viewUser.php"><?php echo $_SESSION['username']?></a></li>
             <li><a href="logout.php">Logout</a></li>
           </ul>
         </li>

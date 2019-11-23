@@ -11,13 +11,13 @@
 		//$is_moderator=trim($_POST['is_moderator']);
 
 			$sql = "INSERT INTO `user`(`id`, `username`, `hashed_password`, `first_name`,`last_name`,`email`) VALUES ('$id','$name','$password','$first_name','$last_name','$email')";
-			if(mysqli_query($con,$sql)){
+			if(mysqli_query($link,$sql)){
 				echo "<script type='text/javascript'>alert('signup succesful');</script>";
 				header("Location:login.php");
 				die();
 			}else{
 				echo "<script type='text/javascript'>alert('signup unsuccesful');</script>";
-				echo mysqli_error($con);
+				echo mysqli_error($link);
 			}
 		}
 
