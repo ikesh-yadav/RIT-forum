@@ -172,10 +172,9 @@ body {
   }
 
   .wrapper {
-    min-height: 100%;
-    margin-bottom: -50px;
+    height: 90vh;
   }
 
   .footer{
-  height: 50px;
+  height: 5vh;
 }
