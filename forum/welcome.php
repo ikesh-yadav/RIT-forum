@@ -19,7 +19,7 @@
     <nav class="menu">
       <ul>
         <li class="element"><a href="createThread.php">New thread</a></li>
-        <li class="element"><img src="user-icon.jpeg" width="30px" height="30px" alt="image not found"></img>
+        <li class="element"><img src="untitled.png" width="34vh" height="34vh" alt="image not found"></img>
           <ul>
             <li><a href="viewUser.php"><?php echo $_SESSION['username']?></a></li>
             <li><a href="logout.php">Logout</a></li>
