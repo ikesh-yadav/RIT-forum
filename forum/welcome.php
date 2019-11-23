@@ -18,7 +18,7 @@
     </div>
     <nav class="menu">
       <ul>
-        <li class="element"><a href="createThread.php">Create Thread</a></li>
+        <li class="element"><a href="createThread.php">New thread</a></li>
         <li class="element"><a href="viewUser.php"><?php echo $_SESSION['username']?></a>
           <ul>
             <li><a href="logout.php">Logout</a></li>
@@ -45,7 +45,7 @@
       if ($result && $result->num_rows> 0) { 
         //output data of each row
         while($row = $result->fetch_assoc()) {
-          echo "<tr><td>
+          echo "<tr class='categoryLinks'><td>
             <form id=category".$row['id']." method='get' action='viewCategory.php'>
               <input type='hidden' name='categoryId' value='".$row['id']."'>
             </form>
