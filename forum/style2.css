@@ -1,0 +1,174 @@
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+    
+    font-family: "Asap", sans-serif;
+  }
+
+  .header img {
+    float: left;
+    width: 339px;
+    height: 152px;
+    
+  }
+  body form h2{
+    color: aliceblue;
+    text-decoration: underline overline;
+    font-size: 32px;
+    font-family: 'Ubuntu', sans-serif;
+  }
+  
+  .header {
+    height: 5%;
+    background-color: rgb(0, 0, 51);
+    font-size:0px;
+    border-radius: 4px;
+    margin: 1%;
+    position:fixed;
+width:100%;
+top:0;
+  }
+
+  .footer {
+    height: 3%;
+    background-color: rgb(0, 0, 51);
+    font-size:0px;
+    border-radius: 4px;
+    margin: 1%;
+  }
+
+
+
+  .mtitle {
+    font-size: 30px;
+    width: 100%;
+    text-align: center;
+    color:white
+  }
+
+  .mfooter {
+    font-size: 20px;
+    width: 100%;
+    text-align: center;
+    color:rgba(255, 255, 255, 0.76);
+    height: 5%;
+  }
+
+  .bottom {
+      position: fixed;
+      bottom: 10px;
+      width: 100%;
+  }
+
+  .header div {
+    position: relative;
+    top: 0px;
+    left: -150px;
+  }
+  
+  .login {
+    overflow: hidden;
+    background-color:#000033;
+    padding: 40px 30px 30px 30px;
+    border-radius: 10px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 400px;
+    transform: translate(-50%, -50%);
+    transition: transform 300ms, box-shadow 300ms;
+    box-shadow: 20px 20px 5px rgba(2, 128, 144, 0.2);
+    
+  }
+  
+  .login > input {
+    font-family: "Asap", sans-serif;
+    display: block;
+    border-radius: 5px;
+    font-size: 16px;
+    background: white;
+    width: 100%;
+    border: 0;
+    padding: 10px 10px;
+    margin: 15px -10px;
+  }
+  .login > button {
+    font-family: "Asap", sans-serif;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    text-transform: uppercase;
+    width: 80px;
+    border: 0;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-left: 75px;
+    border-radius: 50px;
+    background-color: rgb(219, 41, 64);
+    transition: background-color 300ms;
+  }
+
+  .login > a{
+    font-family: "Asap", sans-serif;
+    cursor: pointer;
+    color: rgb(255, 255, 255);
+    font-size: 16px;
+    text-transform: uppercase;
+    width: 80px;
+    border: 0;
+    padding: 10px 0;
+    margin-top: 10px;
+    margin-left: 25px;
+    border-radius: 5px;
+    background-color: rgb(219, 41, 64);
+    transition: background-color 300ms;
+  }
+
+  .login > button:hover {
+    background-color: #FB2326;
+  }
+  .login::before, .login::after {
+    content: '';
+    position: absolute;
+    width: 600px;
+    height: 600px;
+    border-top-left-radius: 40%;
+    border-top-right-radius: 45%;
+    border-bottom-left-radius: 35%;
+    border-bottom-right-radius: 40%;
+    z-index: -1;
+  }
+  .login::before {
+    left: 40%;
+    bottom: -130%;
+    background-color: rgba(250, 51, 78, 0.801);
+    animation: wawes 6s infinite linear;
+    
+  }
+  .login::after {
+    left: 35%;
+    bottom: -125%;
+    background-color: rgba(105, 39, 212, 0.472);
+    animation: wawes 7s infinite;
+    
+  }
+  @keyframes wawes {
+    from {
+      transform: rotate(0);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+
+  .wrapper {
+    min-height: 100%;
+    margin-bottom: -50px;
+  }
+
+  .footer{
+  height: 50px;
+}
