@@ -9,17 +9,6 @@
   <title>Forum</title>
   <link rel="stylesheet" type="text/css" href="common.css">
 </head>
-<style>
-.q {
-  font-variant: normal;
-  font-weight: bold;
-  margin: 0 auto;
-  display: block;
-  width: 800px;
-  size:70;
-  padding:20px;
-}
-</style>
 </head>
 <body>
   <div id="topbar">
@@ -71,25 +60,27 @@
       echo "</div>";
   }
   ?>
-<div class="content">
-<form method="post">
-	</br></br></br></br></br>
-      <input type="text" class="q" placeholder="Enter Title" name="title" required >
-	</br></br>
-  <input type="text" class="q" placeholder="Enter Subject" name="sub" required>
-  </br></br>
-
-	 <p class="q">Select Category:</p>
-      <input type = "text" class="q" list = "cats" name="cats">
-      <datalist id = "cats">
-        <option value = "a">
-        <option value = "b">
-        <option value = "c">
-        <option value = "d">
-      </datalist>
-      </br><br>
-      <button type="submit" class="q" onclick="">Create</button>
-</div> 
-</div> 
+  <div class="content">
+    <div class="content-container">
+      <div class="add-thread-container">
+        <form method="post">
+          <table>
+            <tr><td>
+          <input type="text" class="q" placeholder="Enter Title" name="title" required >
+            </td></tr>
+            <tr><td>
+          <input type="textarea" class="q" placeholder="Enter Subject" name="subject" rows="10" required>
+          </td></tr>
+          <tr><td>
+          <input type = "text"  placeholder="Enter catergpry" class="q" name="categoryList">
+          </td></tr>
+            <tr><td>
+          <button type="submit" class="q" onclick="">Create</button>
+          </td></tr>
+          </table>
+        </form>
+      </div> 
+    </div>
+  </div> 
 </body>
 </html>

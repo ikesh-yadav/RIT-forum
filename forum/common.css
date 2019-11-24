@@ -1,4 +1,4 @@
-/* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
+/* Responsive layout */
 @media screen and (max-width: 600px) {
     .content {
       left:0 !important;
@@ -26,9 +26,10 @@ html,body{
     background-color: #FAFAFB;
 }
 /* Full-width input fields */
-input[type=text], input[type=password],input[type=date] {
-    padding: 12px 20px;
-    margin: 8px 0;
+input[type=text], input[type=textarea], input[type=password],input[type=date] {
+    width:90%;
+    padding: 5px 5px;
+    margin: 4px 0;
     display: inline-block;
     border: 1px solid #ccc;
     box-sizing: border-box;
@@ -38,27 +39,34 @@ button, .submitbtn, input[attr="subbtn"] {
     display: block;
     background-color:black;
     color: white;
-    padding: 14px 20px;
+    padding: 14px 0;
     margin: 8px 0;
-    width: 100%;
+    width: auto;
 }
 /* Style the tables and buttons on mouse-over */
-table, th, td {
-    width: max-content;
-    margin-left:auto; 
-    margin-right:auto;
+table{
+    margin-left:10px; 
+    margin-right:10px;
     text-align: center;
 }
+th,td{
+  text-align: center;
+}
+table{
+  width:100%;
+}
 #page-container{
-    width:100%;
-    /* */
+  position: absolute;
+  left:0;top:7vh;
+  width:100vw;
+  /* */
 }
 
 #left-tab{
     color: white;
-    position: absolute;
+    position: fixed;
     left: 0;right: 0;top: 7%;bottom:0;
-    height: fill;
+    height: 100vh;
     width:100px;
     display:inline-block;
     border-right: 1px solid rgb(37, 200, 206); 
@@ -75,13 +83,14 @@ table, th, td {
 }
 #left-tab>*:hover{
     color:black;
-    background-color: white;
 }
 .content{
     position: fixed;
-    left:100px;top:7vh;
+    left:100px !important;
+    top:7vh !important;
     width:100%;
     display:inline-block;
+    text-align:center;
 }
 
 .categoryLinks:hover,.categoryLinks:hover>td,.categoryLinks:hover>td>a{
@@ -97,7 +106,10 @@ body {
   font-family: 'Segoe UI', sans-serif;
 }
 #topbar{
+  position: fixedlef;
+  top:0;left:0;
   height: 7vh;
+  width:100vw;
   padding-left:20px;
   padding-right:20px;
   background-color: rgb(28, 33, 40);
@@ -194,4 +206,16 @@ body {
   right:0;
   top: 7vh;
   z-index: 1;
+}
+/*styling for createThread.php*/
+.add-thread-container{
+  width:70vw;
+  margin-top:40px;
+  box-shadow: 2px 2px 2px 2px grey;
+}
+.content-container{
+  text-align:center;
+  margin-left: auto;
+  margin-right:auto;
+  width:fit-content;
 }
