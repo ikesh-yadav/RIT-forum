@@ -39,6 +39,7 @@ body {
     padding:1%;
     overflow: auto;
     display: flex;
+    justify-content: center;
   }
 
   #democontainer {
