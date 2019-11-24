@@ -18,14 +18,12 @@
     if(isset($_SESSION['logged_in'])){
       header("Location: welcome.php");
       die();
-    }
-    else{
+    }else{
       if(isset($_POST['id']) && isset($_POST['password'])){
-        
+        /*retrieve data from the loginn form */
         $id=trim($_POST['id']);
         $pass=trim($_POST["password"]);
-
-      
+        /*sql query */
         $query = "SELECT username,hashed_password FROM user WHERE id='".$id."'";
         /* Execute the statement */
         if ($result = mysqli_query($link, $query)) {
@@ -34,22 +32,21 @@
           $retrevied_password=$row[1];
           /* free result set */
           mysqli_free_result($result);
-        }
-        else {
+        }else{
           printf("Error: %s.\n", mysqli_error($link));
         }
-        
-        /*setting common session data*/
-        $_SESSION['id']=$id;
-        $_SESSION['username']=$nam;
+              
         /*checking password*/
         if($retrevied_password==$pass){
+          /*setting common session data*/
           $_SESSION['logged_in']=true;
+          $_SESSION['id']=$id;
+          $_SESSION['username']=$nam;
           header("Location: welcome.php");
           exit();
         }
         else{
-          $login_status="Login unsuccesful";
+          $login_status="Login unsuccesful, try agian";
         }
       }
     }
@@ -79,7 +76,7 @@
   -->
   <div class="wrapper">
   <div class="header">
-      <img src="https://www.easytourz.com/uploads/Businesslogo/1527234792.png" alt="msrit"/>
+      <img src="msrit-logo.png" alt="msrit"/>
       <div class="mtitle"><b>RIT FORUM</b></div>
   </div>
   <form class="login" method="post">
@@ -88,12 +85,12 @@
     <input type="password" placeholder="Enter Password" name="password" required>
     <button type="submit">Login</button>
     <button type="submit" onclick="myFunction()">Signup</button>
+    <div id="login-status"><?php echo $login_status?></div>
     <script>
     function myFunction() {
       window.location="signup.php";
     }
     </script>
-    <div style="text-align:center"><?php $login_status?></div>
   <!-- <a href="signup.php"><input type="button" value="Signup"></input></a>-->
   </form>
   </div>
