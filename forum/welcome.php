@@ -11,15 +11,15 @@
 <body>
   <div id="topbar">
     <div id="title">
-      <a href="index.html">
-        <img src="msrit-logo.png" width=35px height=35px style="z-index:1;">
+      <a href="welcome.php">
+        <img src="msrit-logo.png"">
+        <span id="title-name">Forum</span>
       </a>
-      <span id="title-name">Forum</span>
     </div>
     <nav class="menu">
       <ul>
         <li class="element"><a id="plusIcon" href="createThread.php">+</a></li>
-        <li class="element"><img src="untitled.png" width="34vh" height="34vh" alt="image not found"></img>
+        <li class="element"><img src="user-icon.png" width="34vh" height="34vh" alt="image not found"></img>
           <ul>
             <li><a href="viewUser.php"><?php echo $_SESSION['username']?></a></li>
             <li><a href="logout.php">Logout</a></li>

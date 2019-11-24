@@ -1,7 +1,10 @@
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-    .column.side, .column.middle {
-      width: 100%;
+    .content {
+      left:0 !important;
+    }
+    .menu{
+      width:0 !important;
     }
 }
 * {
@@ -13,6 +16,10 @@
 a{
     color:white;
     text-decoration: none;
+}
+.links{
+  color:black;
+  text-decoration:initial;
 }
 html,body{
     height:100%;
@@ -36,24 +43,6 @@ button, .submitbtn, input[attr="subbtn"] {
     margin: 8px 0;
     width: 100%;
 }
-
-a:hover,button:hover {
-    opacity: 0.8;
-}
-
-.container {
-    padding: 16px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 50%; /* Could be more or less, depending on screen size */
-}
-
 /* Style the tables and buttons on mouse-over */
 table, th, td {
     width: max-content;
@@ -80,18 +69,23 @@ table, th, td {
     background-color: rgb(32, 38, 46);
 }
 #left-tab>*{
-    color: white;
+    color: white !important;
+}
+.categoryLinks>*>*{
+  color:white;
 }
 #left-tab>*:hover{
     color:black;
     background-color: white;
 }
-#content{
-    width:80%;
+.content{
+    position: fixed;
+    left:100px;top:7vh;
+    width:100%;
     display:inline-block;
 }
 
-.categoryLinks:hover,.categoryLinks:hover>td{
+.categoryLinks:hover,.categoryLinks:hover>td,.categoryLinks:hover>td>a{
     background-color: #0084ff;
     color:black;
     border-radius: 2px;
@@ -113,6 +107,7 @@ body {
 }
 #topbar>title>img,#topbar>title>a{
     background-color: white;
+    font-size:20vh
 }
 #logo {
   float: left;
@@ -123,11 +118,15 @@ body {
   float: left;
   width:150px;
 }
+#title>a>img{
+  width:6vh;
+  height:6vh;
+}
 #title-name{
   vertical-align: top;
   display: inline-block;
   color:white;
-  font-size: 1.7em;
+  font-size: 5vh;
   height: fit-content;
 }
 .menu{
@@ -160,7 +159,8 @@ body {
   width:30px;
   height: 30px;
 }
-.menu>ul>li {
+.menu>ul>li{
+  color:white;
   float: left;
 }
 .element:hover,.element:active {
