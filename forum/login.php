@@ -54,47 +54,29 @@
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/en/thumb/5/5a/Ramaiah_Institutions_Logo.png/220px-Ramaiah_Institutions_Logo.png">
 </head>
 <body>
-
-<!--
-<div style ="height: 5%;background-color: rgb(0, 0, 51);font-size:0px;">
-  <div style="font-size: 30px;width: 100%;text-align: center;color:white"><b>RIT FORUM</b></div>
-</div>
-<h2 style="text-align:center">Login</h2>
-  <form class="modal-content" method="post">
-    <div class="container">
-      <label for="id"><b>ID</b></label>
-      <input type="text" placeholder="Enter id" name="id" required>
-
-      <label for="password"><b>Password</b></label>
-      <input type="password" placeholder="Enter Password" name="password" required>
-      <button type="submit">Login</button>
-	    <a href="signup.php"><input type="button" value="Signup"></input></a>
-      <div style="text-align:center"><//?php $login_status?></div>
-    </div>
-
   -->
   <div class="wrapper"> 
-  <div class="header" id="over">
-      <img id="iover" class="ititle" src="msrit-logo.png" alt="msrit"/>
-      <p id="iover" class="mtitle"><b>RIT FORUM</b></p>
-      <br style="clear: both;">
-  </div>
-  
+    <div class="header" id="over">
+        <img id="iover" class="ititle" src="msrit-logo.png" alt="msrit"/>
+        <p id="iover" class="mtitle"><b>RIT FORUM</b></p>
+        <br style="clear: both;">
+    </div>
    
     <form class="login" method="post">
-      <h2 style="text-align:center">LOGIN</h2>
-      <input type="text" placeholder="Enter ID" name="id" required>
-      <input type="password" placeholder="Enter Password" name="password" required>
-      <button type="submit">Login</button>
-      <button type="submit" onclick="myFunction()">Signup</button>
-      <div id="login-status"><?php echo $login_status?></div>
-      <script>
-      function myFunction() {
-        window.location="signup.php";
-      }
-      </script>
+        <h2 style="text-align:center">LOGIN</h2>
+        <input type="text" placeholder="Enter ID" name="id" required>
+        <input type="password" placeholder="Enter Password" name="password" required>
+        <button type="submit">Login</button>
+        <button type="submit" onclick="myFunction()">Signup</button>
+        <div id="login-status"><?php echo $login_status?></div>
+        <script>
+          function myFunction() {
+            window.location="signup.php";
+          }
+        </script>
     </form>
   </div>
+
   <div>
     <footer class="footer">
       <div class="mfooter">
@@ -102,5 +84,6 @@
       </div>
     </footer>
   </div>
+  
 </body>
 </html>

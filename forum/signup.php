@@ -1,3 +1,4 @@
+<!DOCTYPE html>
 <?php
 	include_once('mysql.php');
 	if(isset($_POST['username'])){
@@ -22,29 +23,49 @@
 		}
 
 ?>
-<html>
+<html lang="en">
 <head>
-	<link rel="stylesheet" type="text/css" href="common.css">
+	<link rel="stylesheet" type="text/css" href="style2.css">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta charset="UTF-8">
+	<title>Forum | RIT</title>
+	<link href="https://fonts.googleapis.com/css?family=Ubuntu&display=swap" rel="stylesheet">
+	<link rel="icon" href="https://upload.wikimedia.org/wikipedia/en/thumb/5/5a/Ramaiah_Institutions_Logo.png/220px-Ramaiah_Institutions_Logo.png">
 </head>
 <body>
-	<div style ="height: 5%;background-color: rgb(0, 0, 51);font-size:0px;">
-		<div style="font-size: 30px;width: 100%;text-align: center;color:white"><b>Forum</b></div>
-	</div>
-	<h2 style="text-align:center">Signup</h2>
-	<form class="modal-content" method="post">
-		<div class="container">
-			<label for="id"><b>ID</b></label><input type="text" placeholder="Enter ID" name="id" required>
-			<label for="username"><b>Username</b></label><input type="text" placeholder="Enter Username" name="username" required>
-			<label for="password"><b>Password</b></label><input type="password" placeholder="Enter Password" name="password" required>
-			<label for="first_name"><b>First Name</b></label><input type="text" placeholder="Enter your First Name" name="first_name" required>
-			<label for="last_name"><b>Last Name</b></label><input type="text" placeholder="Enter your Last Name" name="last_name" required>
-			<label for="email"><b>Email</b></label><input type="text" placeholder="Enter email" name="email" required>
-			<!--<label for="is_moderator"><b>Moderator</b></label><input type="text" placeholder="Are you Faculty ?" name="is_moderator">-->
-			
-			<button type="submit">Signup</button>
-			<a href="login.php"><input type="button" value="Login"></input></a> 
+	<div class="wrapper">
+		<div class="header" id="over">
+		<img id="iover" class="ititle" src="msrit-logo.png" alt="msrit"/>
+		<p id="iover" class="mtitle"><b>RIT FORUM</b></p>
+		<br style="clear: both;">
 		</div>
-	</form>
+		
+		<form class="signup" method="post">
+			<h2 style="text-align:center">Signup</h2>
+					<input type="text" placeholder="Enter ID" name="id" required>
+					<input type="text" placeholder="Enter Username" name="username" required>
+					<input type="password" placeholder="Enter Password" name="password" required>
+					<input type="text" placeholder="Enter your First Name" name="first_name" required>
+					<input type="text" placeholder="Enter your Last Name" name="last_name" required>
+					<input type="text" placeholder="Enter email" name="email" required>
+
+					<button type="submit">Signup</button>
+					<button type="submit" onclick="myFunction()">Login</button>
+					<script>
+						function myFunction() {
+							window.location="login.php";
+						}
+					</script>
+		</form>
+	</div>
+
+	<div>
+		<footer class="footer">
+			<div class="mfooter">
+				<p> <a href='#' onclick='window.open("http://www.msrit.edu"); return false;'>MSRIT</a> </p>
+			</div>
+		</footer>
+  	</div>
+
 </body>
 </html>
