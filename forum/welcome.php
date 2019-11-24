@@ -12,7 +12,7 @@
   <div id="topbar">
     <div id="title">
       <a href="welcome.php">
-        <img src="msrit-logo.png"">
+        <img src="msrit-logo.png">
         <span id="title-name">Forum</span>
       </a>
     </div>

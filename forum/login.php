@@ -2,8 +2,7 @@
 <?php
   include_once('mysql.php');
   session_start();
-  /*unsetting loging unsuccessful message variable */
-  if(isset($_SESSION['login_data'])){unset($_SESSION['login_data']);}
+
 ?>
 <html lang="en">
 <head>
