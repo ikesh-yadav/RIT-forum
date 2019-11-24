@@ -46,7 +46,7 @@
           exit();
         }
         else{
-          $login_status="Login unsuccesful, Try Again!";
+          $login_status="Login unsuccessful, Try Again!";
         }
       }
     }
