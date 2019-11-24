@@ -155,10 +155,12 @@ body {
   }
   .menu>ul>li:hover>ul:hover>li:hover {
     display: block;
-    background-color: #666;
+    background-color: rgb(32, 38, 46);
+    border-radius:5px
   }
   .menu>ul>li>ul>li {
-    margin: 10px;
+    padding: 10px;
+    margin:10px;
   }
   .menu>ul>li>ul {
     position: absolute;

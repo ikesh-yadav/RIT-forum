@@ -6,20 +6,20 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Forum</title>
-  <link rel="stylesheet" type="text/css" href="newcss.css">
+  <link rel="stylesheet" type="text/css" href="common.css">
 </head>
 <body>
   <div id="topbar">
     <div id="title">
-    <h1>Forum</h1>
-      <!--<a href="index.html">
-        <img src="developer.png" width=220px height=90px;>
-      </a>-->
+      <a href="welcome.php">
+        <img src="msrit-logo.png"">
+        <span id="title-name">Forum</span>
+      </a>
     </div>
     <nav class="menu">
       <ul>
-        <li class="element"><a href="createThread.php">New thread</a></li>
-        <li class="element"><img src="untitled.png" width="34vh" height="34vh" alt="image not found"></img>
+        <li class="element"><a id="plusIcon" href="createThread.php">+</a></li>
+        <li class="element"><img src="user-icon.png" width="34vh" height="34vh" alt="image not found"></img>
           <ul>
             <li><a href="viewUser.php"><?php echo $_SESSION['username']?></a></li>
             <li><a href="logout.php">Logout</a></li>
@@ -29,7 +29,6 @@
     </nav>
   </div>
   <?php
-  //values required to setup connect
   if(!isset($_SESSION['logged_in'])){
     header("Location: login.php");
     exit();

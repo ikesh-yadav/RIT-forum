@@ -1,7 +1,10 @@
 /* Responsive layout - makes the three columns stack on top of each other instead of next to each other */
 @media screen and (max-width: 600px) {
-    .column.side, .column.middle {
-      width: 100%;
+    .content {
+      left:0 !important;
+    }
+    .menu{
+      width:0 !important;
     }
 }
 * {
@@ -13,6 +16,10 @@
 a{
     color:white;
     text-decoration: none;
+}
+.links{
+  color:black;
+  text-decoration:initial;
 }
 html,body{
     height:100%;
@@ -36,24 +43,6 @@ button, .submitbtn, input[attr="subbtn"] {
     margin: 8px 0;
     width: 100%;
 }
-
-a:hover,button:hover {
-    opacity: 0.8;
-}
-
-.container {
-    padding: 16px;
-    box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-}
-
-/* Modal Content/Box */
-.modal-content {
-    background-color: #fefefe;
-    margin: 5% auto 15% auto; /* 5% from the top, 15% from the bottom and centered */
-    border: 1px solid #888;
-    width: 50%; /* Could be more or less, depending on screen size */
-}
-
 /* Style the tables and buttons on mouse-over */
 table, th, td {
     width: max-content;
@@ -80,99 +69,130 @@ table, th, td {
     background-color: rgb(32, 38, 46);
 }
 #left-tab>*{
-    color: white;
+    color: white !important;
+}
+.categoryLinks>*>*{
+  color:white;
 }
 #left-tab>*:hover{
     color:black;
     background-color: white;
 }
-#content{
-    width:80%;
+.content{
+    position: fixed;
+    left:100px;top:7vh;
+    width:100%;
     display:inline-block;
 }
-h1{
-    color:white;
-    font-size: 1.7em;
-}
-.categoryLinks:hover,.categoryLinks:hover>td>a{
-    background-color: white;
+
+.categoryLinks:hover,.categoryLinks:hover>td,.categoryLinks:hover>td>a{
+    background-color: #0084ff;
     color:black;
-    border-radius: 7px;
+    border-radius: 2px;
 }
 
 
 /*new thing*/
 
 body {
-    font-family: 'Segoe UI', sans-serif;
-  }
+  font-family: 'Segoe UI', sans-serif;
+}
+#topbar{
+  height: 7vh;
+  padding-left:20px;
+  padding-right:20px;
+  background-color: rgb(28, 33, 40);
+  border-top: 2px solid #0084ff;
+  border-bottom: 1px solid black;
+}
+#topbar>title>img,#topbar>title>a{
+    background-color: white;
+    font-size:20vh
+}
 #logo {
-    float: left;
-    font-size: 30px;
-    color: white;
-  }
+  float: left;
+  color: white;
+}
 #title{
-    float: left;
-  }
-  .menu{
-    float:right;
-    height: 7%;
-  }
-  .menu>ul {
-    display:inline-block;
-    list-style-type: none;
-    width: 100%;
-    background-color: #333;
-    height: 6%;
-  }
-  .element {
-    min-width:100px;
-    position: relative;
-    display: inline-block;
-    color: white;
-    text-align: center;
-    font-size: 20px;
-  }
-  .element>a{   
-    height:40px;
-  }
-  .menu>ul>li {
-    float: left;
-  }
-  .element:hover {
-    border-bottom: 1px solid #0084ff;
-    cursor: pointer;
-  }
-  .menu>ul>li>ul {
-    width:100%;
-    margin: 0;
-    padding: 0;
-    list-style-type: none;
-    display: none;
-  }
-  .menu>ul>li:hover>ul {
-    display: block;
-  }
-  .menu>ul>li:hover>ul:hover>li:hover {
-    display: block;
-    background-color: #666;
-  }
-  .menu>ul>li>ul>li {
-    margin: 10px;
-  }
-  .menu>ul>li>ul {
-    position: absolute;
-    background-color: black;
-    right:0;
-    top: 100%;
-    z-index: 1;
-  }
-  #topbar{
-    height: 7%;
-    padding-left:1%;
-    padding-right:2%;
-    background-color: rgb(32, 38, 46);
-    border-bottom: 1px solid black;
-    border-top: 2px solid #0084ff;
-  }
+  height:100%;
+  float: left;
+  width:150px;
+}
+#title>a>img{
+  width:6vh;
+  height:6vh;
+}
+#title-name{
+  vertical-align: top;
+  display: inline-block;
+  color:white;
+  font-size: 5vh;
+  height: fit-content;
+}
+.menu{
+  float:right;
+  height: 6vh;
+  width:fit-content;
+}
+.menu>ul {
+  display:inline-block;
+  list-style-type: none;
+  height: 6vh;
+}
+.element {
+  padding-left: 1vw;
+  padding-right: 1vw;
+  position: relative;
+  display: inline-block;
+  color: white;
+  text-align: center;
+  font-size: 20px;
+  height:7vh;
+}
+.element>*{
+  display:inline-block;
+  vertical-align: top;
+}
+.element>#plusIcon{
+  font-family: 'Times New Roman', Times, serif;
+  font-size: xx-large;
+  width:30px;
+  height: 30px;
+}
+.menu>ul>li{
+  color:white;
+  float: left;
+}
+.element:hover,.element:active {
+  background-color: #0084ff;
+  border-bottom: 3px solid #0084ff;
+  cursor: pointer;
+  z-index: 1;
+}
+.menu>ul>li>ul {
   
+  width:auto;
+  margin: 0;
+  padding: 0;
+  list-style-type: none;
+  display: none;
+}
+.menu>ul>li:hover>ul,.menu>ul>li:active>ul {
+  display: block;
+}
+.menu>ul>li:hover>ul:hover>li:hover {
+  display: block;
+  background-color: rgb(32, 38, 46);
+  border-radius:5px
+}
+.menu>ul>li>ul>li {
+  padding: 5px;
+  margin:5px;
+}
+.menu>ul>li>ul {
+  position: absolute;
+  background-color: #0084ff;
+  right:0;
+  top: 7vh;
+  z-index: 1;
+}
