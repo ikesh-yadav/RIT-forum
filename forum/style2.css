@@ -196,6 +196,6 @@ body {
   background-color:white;
   color:red;
   margin:10px;
-  box-shadow: 5px 5px 10px rgb(21, 181, 202); /*(x_pos,y_pos,fadeout-> color)*/
+  box-shadow: 3px 3px 15px rgb(21, 181, 202); /*(x_pos,y_pos,fadeout-> color)*/
   border-radius: 4px;
 }
