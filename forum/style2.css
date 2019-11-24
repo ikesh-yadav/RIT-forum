@@ -29,40 +29,54 @@ body {
   }
   
   .header {
-    height: 5%;
     background-color: rgb(0, 0, 51);
-    font-size:0px;
     border-radius: 4px;
+    margin: 1%;
     padding:1%;
-    margin-top: 1px;    
-    margin-bottom: 1px;    
-    margin-left:auto;
-    margin-right:auto;
-    width: 90%;;
-    top:0;
+    overflow: auto;
+    display: flex;
+  }
+
+  #democontainer {
+    width: 100px ;
+    max-width: 100% ;
+    margin-left: auto ;
+    margin-right: auto ;
+    background-color: rgb(0, 0, 51);
+    border-radius: 4px;
   }
 
   .footer {
-    height: 3%;
     background-color: rgb(0, 0, 51);
-    font-size:0px;
     border-radius: 4px;
     margin: 1%;
+    height: 5vh;
   }
    
   .mtitle {
-    font-size: 30px;
-    width: 100%;
-    text-align: center;
-    color:white
+    font-size: 30px;    
+    /*text-align: center;*/
+    color:white;
+    float: left;
+  }
+
+  .ititle{
+    float: left;
   }
 
   .mfooter {
     font-size: 20px;
-    width: 100%;
     text-align: center;
     color:rgba(255, 255, 255, 0.76);
-    height: 5%;
+  }
+  /*
+  #over {
+    
+    background-color: rgb(0, 0, 51);
+  }*/
+
+  #iover {
+    margin: auto;
   }
 
   .bottom {
@@ -177,12 +191,11 @@ body {
     margin-bottom: -50px;
   }
 
-  .footer{
-  height: 5vh;
-}
 #login-status{
   text-align:center;
-  /*background-color:white;*/
+  background-color:white;
   color:red;
   margin:10px;
+  box-shadow: 20px 20px 5px rgba(2, 128, 144, 0.2);
+  border-radius: 4px;
 }

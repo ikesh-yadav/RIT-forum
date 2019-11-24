@@ -46,7 +46,7 @@
           exit();
         }
         else{
-          $login_status="Login unsuccesful, try agian";
+          $login_status="Login unsuccesful, Try Again!";
         }
       }
     }
@@ -74,30 +74,32 @@
     </div>
 
   -->
-  <div class="wrapper">
-  <div class="header">
-      <img src="msrit-logo.png" alt="msrit"/>
-      <div class="mtitle"><b>RIT FORUM</b></div>
+  <div class="wrapper"> 
+  <div class="header" id="over">
+      <img id="iover" class="ititle" src="msrit-logo.png" alt="msrit"/>
+      <p id="iover" class="mtitle"><b>RIT FORUM</b></p>
+      <br style="clear: both;">
   </div>
-  <form class="login" method="post">
-    <h2 style="text-align:center">LOGIN</h2>
-    <input type="text" placeholder="Enter ID" name="id" required>
-    <input type="password" placeholder="Enter Password" name="password" required>
-    <button type="submit">Login</button>
-    <button type="submit" onclick="myFunction()">Signup</button>
-    <div id="login-status"><?php echo $login_status?></div>
-    <script>
-    function myFunction() {
-      window.location="signup.php";
-    }
-    </script>
-  <!-- <a href="signup.php"><input type="button" value="Signup"></input></a>-->
-  </form>
+  
+   
+    <form class="login" method="post">
+      <h2 style="text-align:center">LOGIN</h2>
+      <input type="text" placeholder="Enter ID" name="id" required>
+      <input type="password" placeholder="Enter Password" name="password" required>
+      <button type="submit">Login</button>
+      <button type="submit" onclick="myFunction()">Signup</button>
+      <div id="login-status"><?php echo $login_status?></div>
+      <script>
+      function myFunction() {
+        window.location="signup.php";
+      }
+      </script>
+    </form>
   </div>
   <div>
     <footer class="footer">
       <div class="mfooter">
-      <a href='#' onclick='window.open("http://www.msrit.edu"); return false;'>MSRIT</a>
+          <p> <a href='#' onclick='window.open("http://www.msrit.edu"); return false;'>MSRIT</a> </p>
       </div>
     </footer>
   </div>
