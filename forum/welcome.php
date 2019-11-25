@@ -16,10 +16,15 @@
         <span id="title-name">Forum</span>
       </a>
     </div>
+    <div class="extra-content">
+      <a href="viewCategory.php">
+
+      </a>
+    </div>
     <nav class="menu">
       <ul>
         <li class="element"><a id="plusIcon" href="createThread.php">+</a></li>
-        <li class="element"><img src="user-icon.png" width="30px" height="30px" alt="image not found"></img>
+        <li class="element"><button class="stock-buttons"><img src="user-icon.png" width="30px" height="30px" alt="image not found"></img></button>
             <ul>
               <li><a href="viewUser.php"><?php echo $_SESSION['username']?></a></li>
               <li><a href="logout.php">Logout</a></li>
@@ -36,12 +41,11 @@
     /*retrieve data from session*/
     $id=$_SESSION['id'];
     /*displaying categories*/
-    echo '<div class="page-container">';
     echo '<div class="left-tab">';
     $sql = "SELECT name,id FROM category WHERE status=0";
     $result=$link->query($sql);
     echo '<table class="categories-table">';
-    echo '<tr><td>categories</td></tr>';
+    echo '<tr><td><strong>categories</strong></td></tr>';
     if ($result && $result->num_rows> 0) { 
       //output data of each row
       while($row = $result->fetch_assoc()) {
@@ -70,7 +74,7 @@
       echo "<div class='content-container'>";
         echo "<div class='thread-list-container'>";
           echo "<table class='thread-list-table'>";
-            echo "<tr><td colspan='7'>Threads</td></tr>";
+            echo "<tr><td colspan='7'><strong>Threads</strong></td></tr>";
       if ($result && $result->num_rows> 0) { 
         /*list the result if found*/
         while($row = $result->fetch_assoc()) {
