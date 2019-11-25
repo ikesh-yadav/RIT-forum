@@ -41,6 +41,7 @@
           $_SESSION['logged_in']=true;
           $_SESSION['id']=$id;
           $_SESSION['username']=$nam;
+          setLastActivity();
           header("Location: welcome.php");
           exit();
         }
@@ -54,7 +55,6 @@
   <link rel="icon" href="https://upload.wikimedia.org/wikipedia/en/thumb/5/5a/Ramaiah_Institutions_Logo.png/220px-Ramaiah_Institutions_Logo.png">
 </head>
 <body>
-  -->
   <div class="wrapper"> 
     <div class="header" id="over">
         <img id="iover" class="ititle" src="msrit-logo.png" alt="msrit"/>

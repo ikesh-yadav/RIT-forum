@@ -58,6 +58,17 @@
           }else echo "<tr><td>No categories</td></tr>";
         echo "</table>";
       echo "</div>";
+    echo "</div>";
+  }
+  if(isset($_SESSION['logged_in']) and isset($_POST['title']) and isset($_POST['subject']) and isset($_POST['categoryList'])){
+    $sql="INSERT into `thread` (`subject`,`description`,`user_id`) values ('".$_POST['title']."','".$_POST['subject']."',".$_SESSION['id'].");";
+    $result=$link->query($sql);
+    if($result) {
+      echo "<script>alert('Thread created succesfully')</script>";
+      //sleep(10);
+      header("Location: viewUser.php");
+      exit();
+    }
   }
   ?>
   <div class="content">
@@ -66,17 +77,20 @@
         <form method="post">
           <table>
             <tr><td>
-          <input type="text" class="q" placeholder="Enter Title" name="title" required >
+              <label><b>New thread</b></label>
+            </tr></td>
+            <tr><td>
+              <input type="text" class="q" placeholder="Enter Title" name="title" required >
             </td></tr>
             <tr><td>
-          <input type="textarea" class="q" placeholder="Enter Subject" name="subject" rows="10" required>
-          </td></tr>
-          <tr><td>
-          <input type = "text"  placeholder="Enter catergpry" class="q" name="categoryList">
-          </td></tr>
+              <textarea class="q" placeholder="Enter Subject" name="subject" rows="15" required></textarea>
+            </td></tr>
             <tr><td>
-          <button type="submit" class="q" onclick="">Create</button>
-          </td></tr>
+              <input type = "text"  placeholder="Enter catergory" class="q" name="categoryList">
+            </td></tr>
+            <tr><td>
+              <button type="submit" class="q" onclick="">Create</button>
+            </td></tr>
           </table>
         </form>
       </div> 

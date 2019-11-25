@@ -61,7 +61,9 @@
         /*displaying users*/
         $sql = "SELECT username,picture,first_name,created,id,last_activity FROM user WHERE status=0";
         echo '<div id="content">';
-        echo '<table id="categories-tab">';
+        echo "<div class='content-container'>";
+        echo "<div class='users-list-container'>";
+        echo "<table id='categories-tab'>";
         echo "<tr><td>picture</td>
                 <td>Username</td>
                 <td>first_name</td>
@@ -73,27 +75,32 @@
         if ($result && $result->num_rows> 0) { 
           //output data of each row
           while($row = $result->fetch_assoc()) {
-              echo "<tr><td>";
-              if($row['picture']!=null) echo '<img width="40" height="40" src="data:image/jpeg;base64,'.base64_encode( $row['picture'] ).'"/>';
-              else echo '<img  width="40" height="40" style="background-color: #0084ff;" src="user-icon.png"/>';
-              echo "</td><td>
-                      ".$row['username']."
-                  </td><td>
-                      ".$row['first_name']."
-                  </td><td>
-                      ".$row['id']."
-                  </td><td>
-                      ".$row['created']."
-                  </td><td>
-                      ".$row['last_activity']."
-                  </td></tr>";
+            echo "<tr class='userLinks'><td><a href='#' onclick='document.forms[\"user-".$row['id']."\"].submit();'>
+            <form id='user-".$row['id']."' method='get' action='viewUser.php'>
+              <input type='hidden' name='User_to_view' value='".$row['id']."'>
+            </form>";
+            if($row['picture']!=null) echo '<img width="40" height="40" src="data:image/jpeg;base64,'.base64_encode( $row['picture'] ).'">';
+            else echo '<img  width="40" height="40" style="background-color: #0084ff;" src="user-icon.png">';
+            echo "</td><td>
+                    ".$row['username']."
+                </td><td>
+                    ".$row['first_name']."
+                </td><td>
+                    ".$row['id']."
+                </td><td>
+                    ".$row['created']."
+                </td><td>
+                    ".$row['last_activity']."
+                </td></tr></a>";
           }
         mysqli_free_result($result);
         }else echo "<tr><td>No Users</td></tr>";
         echo "</table>";
         echo "</div>";
         echo "</div>";
-        
+        echo "</div>";
+        echo "</div>";
+        /*closing the connection to the mysql server created in the 'mysql.php' file*/
         mysqli_close($link);
     }
   ?>

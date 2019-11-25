@@ -6,6 +6,9 @@
     .menu{
       width:0 !important;
     }
+    .left-tab{
+      display:none;
+    }
 }
 * {
     box-sizing: border-box;
@@ -26,7 +29,7 @@ html,body{
     background-color: #FAFAFB;
 }
 /* Full-width input fields */
-input[type=text], input[type=textarea], input[type=password],input[type=date] {
+input[type=text], input[type=textarea], input[type=password],input[type=date],textarea {
     width:90%;
     padding: 5px 5px;
     margin: 4px 0;
@@ -48,6 +51,7 @@ table{
     margin-left:10px; 
     margin-right:10px;
     text-align: center;
+    border-collapse: collapse;
 }
 th,td{
   text-align: center;
@@ -55,14 +59,14 @@ th,td{
 table{
   width:100%;
 }
-#page-container{
+.page-container{
   position: absolute;
   left:0;top:7vh;
   width:100vw;
   /* */
 }
 
-#left-tab{
+.left-tab{
     color: white;
     position: fixed;
     left: 0;right: 0;top: 7%;bottom:0;
@@ -75,13 +79,13 @@ table{
     padding-top: 20px;
     background-color: rgb(32, 38, 46);
 }
-#left-tab>*{
+.left-tab>*{
     color: white !important;
 }
 .categoryLinks>*>*{
   color:white;
 }
-#left-tab>*:hover{
+.left-tab>*:hover{
     color:black;
 }
 .content{
@@ -91,6 +95,7 @@ table{
     width:100%;
     display:inline-block;
     text-align:center;
+    overflow-y: scroll;
 }
 
 .categoryLinks:hover,.categoryLinks:hover>td,.categoryLinks:hover>td>a{
@@ -101,12 +106,14 @@ table{
 
 
 /*new thing*/
-
-body {
-  font-family: 'Segoe UI', sans-serif;
+textarea{
+  font-family: 'Segoe UI', sans-serif !important;
 }
-#topbar{
-  position: fixedlef;
+body {
+  font-family: 'Segoe UI', sans-serif !important;
+}
+.topbar{
+  position: fixed;
   top:0;left:0;
   height: 7vh;
   width:100vw;
@@ -116,7 +123,7 @@ body {
   border-top: 2px solid #0084ff;
   border-bottom: 1px solid black;
 }
-#topbar>title>img,#topbar>title>a{
+.topbar>title>img,.topbar>title>a{
     background-color: white;
     font-size:20vh
 }
@@ -209,6 +216,7 @@ body {
 }
 /*styling for createThread.php*/
 .add-thread-container{
+  
   width:70vw;
   margin-top:40px;
   box-shadow: 2px 2px 2px 2px grey;
@@ -218,4 +226,28 @@ body {
   margin-left: auto;
   margin-right:auto;
   width:fit-content;
+  overflow-y: visible;
+}
+
+.userlinks{
+  border-bottom:3px solid #0084ff;
+}
+.thread-list-container{
+  margin-top:40px;
+  overflow-y: visible;
+}
+.thread-list-table{
+  width:100%;
+  overflow-y: visible;
+}
+.thread-list-table>tbody>tr{
+  border:1px solid black;
+}
+.thread-links-list>td{
+  margin-bottom:5px;
+  /*border:1px solid black;*/
+  border-radius:4px;
+}
+.thread-links-list>tr{
+  height:40px;
 }
