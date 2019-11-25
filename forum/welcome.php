@@ -4,7 +4,7 @@
 ?>
 <html>
 <head>
-  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Forum</title>
   <link rel="stylesheet" type="text/css" href="common.css">
 </head>
@@ -19,14 +19,14 @@
     <nav class="menu">
       <ul>
         <li class="element"><a id="plusIcon" href="createThread.php">+</a></li>
-        <li class="element"><img src="user-icon.png" width="34vh" height="34vh" alt="image not found"></img>
-          <ul>
-            <li><a href="viewUser.php"><?php echo $_SESSION['username']?></a></li>
-            <li><a href="logout.php">Logout</a></li>
-          </ul>
+        <li class="element"><img src="user-icon.png" width="30px" height="30px" alt="image not found"></img>
+            <ul>
+              <li><a href="viewUser.php"><?php echo $_SESSION['username']?></a></li>
+              <li><a href="logout.php">Logout</a></li>
+            </ul>
         </li>
       </ul>
-    </nav>
+</nav>
   </div>
   <?php
   if(!isset($_SESSION['logged_in'])){
@@ -39,105 +39,102 @@
     echo '<div class="page-container">';
     echo '<div class="left-tab">';
     $sql = "SELECT name,id FROM category WHERE status=0";
-      $result=$link->query($sql);
-      echo '<table class="categories-table">';
-      echo '<tr><td>categories</td></tr>';
+    $result=$link->query($sql);
+    echo '<table class="categories-table">';
+    echo '<tr><td>categories</td></tr>';
+    if ($result && $result->num_rows> 0) { 
+      //output data of each row
+      while($row = $result->fetch_assoc()) {
+        echo "<tr class='categoryLinks'><td>
+          <form id=category".$row['id']." method='get' action='viewCategory.php'>
+            <input type='hidden' name='categoryId' value='".$row['id']."'>
+          </form>
+          <a href='#' onclick='document.forms[\"category".$row['id']."\"].submit();'>".$row['name']."</a>
+          </td></tr>";
+      }
+      mysqli_free_result($result);
+    }else echo "<tr><td>No categories</td></tr>";
+    echo "</table>";
+    echo "</div>";
+    /*Spliting the result into pages for easy viewing */
+    if (!isset($_GET['page'])) $present_page_no = "1";
+    else $present_page_no = $_GET['page'];
+    $begin_position = $present_page_no - 1;
+    $begin_position = $begin_position * $no_of_pages_per_page;
+    /*MYSQL query */
+    $sql = "SELECT id,subject,description,user_id,created,likes,dislikes FROM thread WHERE status=0";
+    $result=$link->query("$sql LIMIT $begin_position,$no_of_pages_per_page");
+    $all = $link->query("$sql");
+    /*let's create visualization*/
+    echo "<div class='content'>";
+      echo "<div class='content-container'>";
+        echo "<div class='thread-list-container'>";
+          echo "<table class='thread-list-table'>";
+            echo "<tr><td colspan='7'>Threads</td></tr>";
       if ($result && $result->num_rows> 0) { 
-        //output data of each row
+        /*list the result if found*/
         while($row = $result->fetch_assoc()) {
-          echo "<tr class='categoryLinks'><td>
-            <form id=category".$row['id']." method='get' action='viewCategory.php'>
-              <input type='hidden' name='categoryId' value='".$row['id']."'>
-            </form>
-            <a href='#' onclick='document.forms[\"category".$row['id']."\"].submit();'>".$row['name']."</a>
-            </td></tr>";
-        }
-        mysqli_free_result($result);
-      }else echo "<tr><td>No categories</td></tr>";
-      echo "</table>";
-      echo "</div>";
-      ?>
-      <div class="content">
-        <div class="content-container">
-          <div class="thread-list-container">
-            <table class="thread-list-table">
-              <tr><td colspan="7">Threads</td></tr>
-      <?php
-        if (!isset($_GET['page'])) $present_page_no = "1";
-        else $present_page_no = $_GET['page'];
-        $begin_position = $present_page_no - 1;
-        $begin_position = $begin_position * $no_of_pages_per_page;
-
-        $sql = "SELECT id,subject,description,user_id,created,likes,dislikes FROM thread WHERE status=0";
-        $result=$link->query("$sql LIMIT $begin_position,$no_of_pages_per_page");
-        $all = $link->query("$sql");
-        if ($result && $result->num_rows> 0) { 
-          //let's create visualization
-          while($row = $result->fetch_assoc()) {
             echo "<tr class='thread-links-list'>
-                    <td>
-                      <a href='#' class='links' onclick='document.forms[\"thread-".$row['id']."\"].submit();'>
-                        <form id='thread-".$row['id']."' method='get' action='viewThread.php'>
-                          <input type='hidden' name='threadId' value='".$row['id']."'>
-                        </form>
-                        <table class='thread-link-table'>
-                          <tr>
-                            <td>
-                              ".$row['subject']."
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              ".$row['description']."
-                            </td>
-                          </tr>
-                          <tr>
-                            <td>
-                              Created at: ".$row['created']." by ".$row['user_id']."
-                            </td>
-                          </tr>
-                        </table>
-                      </a>
-                    </td>
-                    <td>  
-                      <table class='thread-likes-dislikes-table'>
+                  <td width='90%'>
+                    <a href='#' class='links' onclick='document.forms[\"thread-".$row['id']."\"].submit();'>
+                      <form id='thread-".$row['id']."' method='get' action='viewThread.php'>
+                        <input type='hidden' name='threadId' value='".$row['id']."'>
+                      </form>
+                      <table class='thread-link-table'>
                         <tr>
                           <td>
-                            <img src='upward-arrow.png' width='30px' height='30px'>
+                            ".$row['subject']."
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            ".((int)$row['likes']-(int)$row['dislikes'])."
+                            ".$row['description']."
                           </td>
                         </tr>
                         <tr>
                           <td>
-                            <img src='downward-arrow.png' width='30px' height='30px'>
+                            Created at: ".$row['created']." by ".$row['user_id']."
                           </td>
                         </tr>
                       </table>
-                    </td>
-                  </tr>";
-          }
-          mysqli_free_result($result);
-        }else echo "<tr><td>No Threads</td></tr>";
-        echo "</table>";
-        echo "</div>";
-
-        $total_no_of_rows = $all->num_rows; // checks the total number of records
-        $total_no_of_pages = $total_no_of_rows / $no_of_pages_per_page; // checks the total number of pages
-
-        // now let's create the "Previous and next"
-        $previous = $present_page_no -1;
-        $next = $present_page_no +1;
-        if ($present_page_no>1) {
-        echo "<a class='links' href='?page=$previous'><input type='button'value='<- Previous page'></a> ";
-        }        
-        if ($present_page_no<$total_no_of_pages) {
-        echo "<a class='links' href='?page=$next'><input type='button'value='Next page ->'></a>";
+                    </a>
+                  </td>
+                  <td width='10%'>  
+                    <table class='thread-likes-dislikes-table'>
+                      <tr>
+                        <td>
+                          <img src='upward-arrow.png' width='30px' height='30px'>
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          ".((int)$row['likes']-(int)$row['dislikes'])."
+                        </td>
+                      </tr>
+                      <tr>
+                        <td>
+                          <img src='downward-arrow.png' width='30px' height='30px'>
+                        </td>
+                      </tr>
+                    </table>
+                  </td>
+                </tr>";
         }
-            /*closing the connection to the mysql server created in the 'mysql.php' file*/
+        mysqli_free_result($result);
+      }else echo "<tr><td>No Threads</td></tr>";
+      echo "</table>";
+      $total_no_of_rows = $all->num_rows; /* checks the total number of records*/
+      $total_no_of_pages = $total_no_of_rows / $no_of_pages_per_page; /* checks the total number of pages*/
+
+      /* now let's create the "Previous and next buttons"*/
+      $previous = $present_page_no -1;
+      $next = $present_page_no +1;
+      if($present_page_no>1) echo "<a class='links-with-buttons' href='?page=$previous'><input type='button'value='<- Previous page'></a> ";        
+      if($present_page_no<$total_no_of_pages) echo "<a class='links-with-buttons' href='?page=$next'><input type='button'value='Next page ->'></a>";
+      echo "</div>";/*closing thread-list-container div*/
+      echo "</div>";/*closing content-container div*/
+      echo "</div>";/*cclosing content div */
+      /*closing the connection to the mysql server created in the 'mysql.php' file*/
     mysqli_close($link);
   }
 ?>
