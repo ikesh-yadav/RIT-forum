@@ -31,7 +31,7 @@
             </ul>
         </li>
       </ul>
-</nav>
+    </nav>
   </div>
   <?php
   if(!isset($_SESSION['logged_in'])){
@@ -50,10 +50,10 @@
       //output data of each row
       while($row = $result->fetch_assoc()) {
         echo "<tr class='categoryLinks'><td>
-          <form id=category".$row['id']." method='get' action='viewCategory.php'>
-            <input type='hidden' name='categoryId' value='".$row['id']."'>
+          <form id=category-".$row['id']." method='get' action='viewCategory.php'>
+            <input type='hidden' name='category_Id' value='".$row['id']."'>
           </form>
-          <a href='#' onclick='document.forms[\"category".$row['id']."\"].submit();'>".$row['name']."</a>
+          <a href='#' onclick='document.forms[\"category-".$row['id']."\"].submit();'>".$row['name']."</a>
           </td></tr>";
       }
       mysqli_free_result($result);
@@ -82,7 +82,7 @@
                   <td width='90%'>
                     <a href='#' class='links' onclick='document.forms[\"thread-".$row['id']."\"].submit();'>
                       <form id='thread-".$row['id']."' method='get' action='viewThread.php'>
-                        <input type='hidden' name='threadId' value='".$row['id']."'>
+                        <input type='hidden' name='thread_Id' value='".$row['id']."'>
                       </form>
                       <table class='thread-link-table'>
                         <tr>
