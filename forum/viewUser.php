@@ -61,15 +61,25 @@
     echo "<div class='content'>";
     echo "<div class='content-container'>";
     echo '<table class="UserView">';
-    echo '<tr><td colspan=2>User Information</td></tr>';
-    /*displaying userss*/
+    echo '<caption>USER INFORMATION:-</caption>';
+    //echo '<tr><td colspan=2>User Information</td></tr>';
+    /*displaying users*/
+
+    echo "<thead>
+            <tr>
+              <th></th>
+              <th></th>
+            </tr>
+          </thead>
+      ";
     if(isset($_GET['User_to_view'])){
       $sql = "SELECT username,id,created,last_activity,is_moderator,email FROM user WHERE id=".$_GET['User_to_view']." and status=0 ";
       $result=$link->query($sql);
       if ($result && $result->num_rows> 0) { 
       //output data of each row
       while($row = $result->fetch_assoc()) {
-          echo "<tr><td>Username</td><td>
+          echo "<tbody>
+              <tr><td>Username</td><td>
                   ".$row['username']."
               </td></tr><tr><td>Id</td><td>
                   ".$row['id']."
@@ -77,7 +87,9 @@
                   ".$row['created']."
               </td></tr><tr><td>Last Activity</td><td>
                   ".$row['last_activity']."
-              </td></tr>";
+              </td></tr>
+              </tbody>  
+            ";
           if($_SESSION['id']===$row['id']) echo "</td></tr><tr><td>Email</td><td>".$row['email']."</td></tr>";
       }
       mysqli_free_result($result);
