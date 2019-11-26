@@ -12,10 +12,11 @@
 <body>
 <div class="topbar">
   <div id="title">
-    <a href="index.html">
+    <a href="welcome.php">
       <img src="msrit-logo.png" width=35px height=35px style="z-index:1;">
+      <span id="title-name">Forum</span>
     </a>
-    <span id="title-name">Forum</span>
+    
   </div>
   <nav class="menu">
     <ul>
