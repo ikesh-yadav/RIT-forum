@@ -270,7 +270,7 @@ th, td {
   border-bottom: 1px solid #ddd;
 }
 
-tr:hover {
+.thread-links-list:hover {
   background-color:#f5f5f5;
 }
 

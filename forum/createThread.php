@@ -66,7 +66,7 @@
     if($result) {
       echo "<script>alert('Thread created succesfully')</script>";
       //sleep(10);
-      header("Location: viewUser.php");
+      header("Location: welcome.php");
       exit();
     }
   }
