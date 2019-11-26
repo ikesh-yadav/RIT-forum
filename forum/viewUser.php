@@ -115,7 +115,9 @@
       }else echo "<tr><td>No Information for this user</td></tr>";    
     }
   echo "</table>";
-  echo '<a style="color:black;background-color:#0084ff;" href="viewUserList.php">All users</a>';
+  //echo '<a style="color:black;background-color:#4095c6;border-radius:2em; text-align:center;
+  //     box-sizing: border-box;" href="viewUserList.php">All users</a>';
+  echo '<a class="button2" href="viewUserList.php">All users</a>';
   echo '</div>';
   echo '</div>';
   /*closing the connection to the mysql server created in the 'mysql.php' file*/
