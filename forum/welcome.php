@@ -127,14 +127,16 @@
         mysqli_free_result($result);
       }else echo "<tr><td>No Threads</td></tr>";
       echo "</table>";
-      $total_no_of_rows = $all->num_rows; /* checks the total number of records*/
-      $total_no_of_pages = $total_no_of_rows / $no_of_pages_per_page; /* checks the total number of pages*/
+      if($all){
+        $total_no_of_rows = $all->num_rows; /* checks the total number of records*/
+        $total_no_of_pages = $total_no_of_rows / $no_of_pages_per_page; /* checks the total number of pages*/
 
-      /* now let's create the "Previous and next buttons"*/
-      $previous = $present_page_no -1;
-      $next = $present_page_no +1;
-      if($present_page_no>1) echo "<a class='links-with-buttons' href='?page=$previous'><input type='button'value='<- Previous page'></a> ";        
-      if($present_page_no<$total_no_of_pages) echo "<a class='links-with-buttons' href='?page=$next'><input type='button'value='Next page ->'></a>";
+        /* now let's create the "Previous and next buttons"*/
+        $previous = $present_page_no -1;
+        $next = $present_page_no +1;
+        if($present_page_no>1) echo "<a class='links-with-buttons' href='?page=$previous'><input type='button'value='<- Previous page'></a> ";        
+        if($present_page_no<$total_no_of_pages) echo "<a class='links-with-buttons' href='?page=$next'><input type='button'value='Next page ->'></a>";
+      }
       echo "</div>";/*closing thread-list-container div*/
       echo "</div>";/*closing content-container div*/
       echo "</div>";/*cclosing content div */
