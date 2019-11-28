@@ -259,17 +259,9 @@ a {
   color:transparent;
 }
 
-table{
-  border-collapse: collapse;
-  width: 100%;
-}
-
-th, td {
-  padding: 8px;
-  text-align: left;
+.thread-links-list>{
   border-bottom: 1px solid #ddd;
 }
-
 .thread-links-list:hover {
   background-color:#f5f5f5;
 }
@@ -291,4 +283,15 @@ a.button2:hover{
     color:#000000;
     background-color:#4eb5f1;
     transition: all 0.3s;
+}
+.thread-view-container{
+  margin-top:40px;
+  padding-top: 20px;
+  padding-bottom: 40px;
+  margin-bottom: 20px;
+  margin-left: auto;
+  margin-right:auto;
+  width:90%;
+  border-radius:5px;
+  box-shadow: 4px 4px 4px 4px rgba(0,0,0,0.2);
 }

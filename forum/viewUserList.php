@@ -38,26 +38,25 @@
       /*retrieve data from session*/
       $id=$_SESSION['id'];
       /*displaying categories*/
-      echo '<div id="page-container">';
-      echo '<div id="left-tab">';
+      echo '<div class="left-tab">';
       $sql = "SELECT name,id FROM category WHERE status=0";
       $result=$link->query($sql);
-      echo '<table id="categories">';
-      echo '<tr><td>categories</td></tr>';
+      echo '<table class="categories-table">';
+      echo '<tr><td><strong>categories</strong></td></tr>';
       if ($result && $result->num_rows> 0) { 
         //output data of each row
         while($row = $result->fetch_assoc()) {
           echo "<tr class='categoryLinks'><td>
-            <form id=category".$row['id']." method='get' action='viewCategory.php'>
-              <input type='hidden' name='categoryId' value='".$row['id']."'>
+            <form id=category-".$row['id']." method='get' action='viewCategory.php'>
+              <input type='hidden' name='category_Id' value='".$row['id']."'>
             </form>
-            <a href='#' onclick='document.forms[\"category".$row['id']."\"].submit();'>".$row['name']."</a>
+            <a href='#' onclick='document.forms[\"category-".$row['id']."\"].submit();'>".$row['name']."</a>
             </td></tr>";
         }
         mysqli_free_result($result);
-        }else echo "<tr><td>No categories</td></tr>";
-        echo "</table>";
-        echo "</div>";
+      }else echo "<tr><td>No categories</td></tr>";
+      echo "</table>";
+      echo "</div>";
         /*displaying users*/
         $sql = "SELECT username,picture,first_name,created,id,last_activity FROM user WHERE status=0";
         echo '<div id="content">';
