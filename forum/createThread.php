@@ -75,7 +75,6 @@
   }
   ?>
   <div class="content">
-    <div class="content-container">
       <div class="add-thread-container">
         <form method="post">
           <table>
@@ -97,7 +96,6 @@
           </table>
         </form>
       </div> 
-    </div>
   </div> 
 </body>
 </html>

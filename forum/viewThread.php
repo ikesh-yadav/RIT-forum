@@ -8,7 +8,62 @@
 <head>
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <link rel="stylesheet" type="text/css" href="common.css">
+  <script type="text/javascript" src="jquery.js"></script>
+  <script>
+    $(document).ready(function() {
+    $('.like-container').click(function(e) {
+        console.log("entered ajax code");
+        var post_id=this.firstElementChild.getAttribute('value');
+        $.ajax({
+            type: 'POST',
+            url: 'like-post.php',
+            data: {
+                user_id: <?php echo $_SESSION['id'] ?>,
+                post_id: this.firstElementChild.getAttribute('value'),
+                is_like:1
+            },
+            dataType: 'text',
+            success: function(data) {
+                // do whatever here
+                if(data === 'success') {
+                  var count = parseInt($('#like-dislike-count'+post_id).text());
+                  $('#like-dislike-count'+post_id).text(count+1);
+                    //console.log('Updated succeeded');
+                } else {
+                    console.log(data); // perhaps an error message?
+                }
+               
+            }
+        });
+    });
+    $('.dislike-container').click(function(e) {
+        console.log("entered ajax code");
+        var post_id=this.firstElementChild.getAttribute('value');
+        $.ajax({
+            type: 'POST',
+            url: 'like-post.php',
+            data: {
+                user_id: <?php echo $_SESSION['id'] ?>,
+                post_id: this.firstElementChild.getAttribute('value'),
+                is_like:0
+            },
+            dataType: 'text',
+            success: function(data) {
+                // do whatever here
+                if(data === 'success') {
+                  var count = parseInt($('#like-dislike-count'+post_id).text());
+                  $('#like-dislike-count'+post_id).text(count-1);
+                  //console.log('Updated succeeded');
+                } else {
+                    console.log(data); // perhaps an error message?
+                }
+            }
+        });
+    });
+  });
+  </script>
 </head>
+
 <body>
   <div class="topbar">
     <div id="title">
@@ -35,6 +90,7 @@
     </nav>
   </div>
 <?php
+  echo "<script> console.log('PHP:started');</script>";
   if(isset($_POST['post_textarea'])){
     if(isset($_SESSION['logged_in'])){
       $sql="INSERT INTO `post`(`content`,`thread_id`, `user_id`) VALUES ('".$_POST['post_textarea']."',".$_GET['thread_Id'].",".$_SESSION['id'].");";
@@ -72,7 +128,6 @@
     $sql1 = "SELECT `id`,`subject`,`created`,`user_id`,`likes`,`dislikes` FROM thread WHERE id='".$_GET['thread_Id']."' and status=0";
     $result1=$link->query($sql1);
     echo "<div class='content'>";
-      echo "<div class='content-container'>";
         echo "<div class='thread-view-container'>";
           echo "<table class='thread-view-table'>";
             
@@ -86,7 +141,7 @@
       echo "<table class='post-list-table'>";
       mysqli_free_result($result1);
       /*Query to retrieve the posts related to a thread */
-      $sql2="SELECT `content` ,`created`,`user_id`,`likes`,`dislikes` FROM `post` WHERE `thread_id`=".$_GET['thread_Id']." and status=0";
+      $sql2="SELECT `id`,`content` ,`created`,`user_id`,`likes`,`dislikes` FROM `post` WHERE `thread_id`=".$_GET['thread_Id']." and status=0";
       $result2=$link->query($sql2);
       if ($result2 && $result2->num_rows> 0) { 
         /*list the result if found*/
@@ -111,17 +166,32 @@
                     <table class='post-likes-dislikes-table'>
                       <tr>
                         <td>
-                          <img src='upward-arrow.png' width='30px' height='30px'>
+                          <div class='like-container'>
+                            <input type='hidden' class='hidden-field' value='".$row['id']."'>
+                            <img src='upward-arrow.png' width='30px' height='30px'>
+                            ";
+                        $query_likes="Select likes from `post_view_like` where `post_id`=".$row['id']."";
+                        $result_of_likes=$link->query($query_likes);
+                        $likes_row=$result_of_likes->fetch_assoc();
+                        $query_dislikes="Select dislikes from `post_view_dislikes` where `post_id`=".$row['id']."";
+                        $result_of_dislikes=$link->query($query_dislikes);
+                        $dislikes_row=$result_of_dislikes->fetch_assoc();
+                        echo  "</div>
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          ".((int)$row['likes']-(int)$row['dislikes'])."
+                          <div id='like-dislike-count".$row['id']."'>
+                          ".((int)$likes_row['likes']-(int)$dislikes_row['dislikes'])."
+                          </div>
                         </td>
                       </tr>
                       <tr>
                         <td>
+                        <div class='dislike-container'>
+                          <input type='hidden' class='hidden-field' value='".$row['id']."'>
                           <img src='downward-arrow.png' width='30px' height='30px'>
+                        </div>
                         </td>
                       </tr>
                     </table>

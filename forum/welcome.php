@@ -71,7 +71,6 @@
     $all = $link->query("$sql");
     /*let's create visualization*/
     echo "<div class='content'>";
-      echo "<div class='content-container'>";
         echo "<div class='thread-list-container'>";
           echo "<table class='thread-list-table'>";
             echo "<tr><td colspan='7'><strong>Threads</strong></td></tr>";
@@ -138,7 +137,6 @@
         if($present_page_no<$total_no_of_pages) echo "<a class='links-with-buttons' href='?page=$next'><input type='button'value='Next page ->'></a>";
       }
       echo "</div>";/*closing thread-list-container div*/
-      echo "</div>";/*closing content-container div*/
       echo "</div>";/*cclosing content div */
       /*closing the connection to the mysql server created in the 'mysql.php' file*/
     mysqli_close($link);

@@ -60,7 +60,6 @@
         /*displaying users*/
         $sql = "SELECT username,picture,first_name,created,id,last_activity FROM user WHERE status=0";
         echo '<div id="content">';
-        echo "<div class='content-container'>";
         echo "<div class='users-list-container'>";
         echo "<table id='categories-tab'>";
         echo "<tr><td>picture</td>
@@ -95,7 +94,6 @@
         mysqli_free_result($result);
         }else echo "<tr><td>No Users</td></tr>";
         echo "</table>";
-        echo "</div>";
         echo "</div>";
         echo "</div>";
         echo "</div>";

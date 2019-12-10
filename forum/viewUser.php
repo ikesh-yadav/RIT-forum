@@ -58,7 +58,6 @@
     echo "</table>";
     echo "</div>";
     echo "<div class='content'>";
-    echo "<div class='content-container'>";
     echo '<table class="UserView">';
     echo '<caption>USER INFORMATION:-</caption>';
     //echo '<tr><td colspan=2>User Information</td></tr>';
