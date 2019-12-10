@@ -7,6 +7,60 @@
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Forum</title>
   <link rel="stylesheet" type="text/css" href="common.css">
+  <script type="text/javascript" src="jquery.js"></script>
+  <script>
+  $(document).ready(function() {
+    $('.like-container').click(function(e) {
+        console.log("entered ajax code");
+        var post_id=this.firstElementChild.getAttribute('value');
+        $.ajax({
+            type: 'POST',
+            url: 'thread-like-post.php',
+            data: {
+                user_id: <?php echo $_SESSION['id'] ?>,
+                thread_id: this.firstElementChild.getAttribute('value'),
+                is_like:1
+            },
+            dataType: 'text',
+            success: function(data) {
+                // do whatever here
+                if(data === 'success') {
+                  var count = parseInt($('#like-dislike-count'+post_id).text());
+                  $('#like-dislike-count'+post_id).text(count+1);
+                    //console.log('Updated succeeded');
+                } else {
+                    console.log(data); // perhaps an error message?
+                }
+               
+            }
+        });
+    });
+    $('.dislike-container').click(function(e) {
+        console.log("entered ajax code");
+        var post_id=this.firstElementChild.getAttribute('value');
+        $.ajax({
+            type: 'POST',
+            url: 'thread-like-post.php',
+            data: {
+                user_id: <?php echo $_SESSION['id'] ?>,
+                thread_id: this.firstElementChild.getAttribute('value'),
+                is_like:0
+            },
+            dataType: 'text',
+            success: function(data) {
+                // do whatever here
+                if(data === 'success') {
+                  var count = parseInt($('#like-dislike-count'+post_id).text());
+                  $('#like-dislike-count'+post_id).text(count-1);
+                  //console.log('Updated succeeded');
+                } else {
+                    console.log(data); // perhaps an error message?
+                }
+            }
+        });
+    });
+  });
+  </script>
 </head>
 <body>
   <div class="topbar">
@@ -66,7 +120,7 @@
     $begin_position = $present_page_no - 1;
     $begin_position = $begin_position * $no_of_pages_per_page;
     /*MYSQL query */
-    $sql = "SELECT id,subject,description,user_id,created,likes,dislikes FROM thread WHERE status=0";
+    $sql = "SELECT id,subject,description,user_id,created FROM thread WHERE status=0";
     $result=$link->query("$sql LIMIT $begin_position,$no_of_pages_per_page");
     $all = $link->query("$sql");
     /*let's create visualization*/
@@ -106,17 +160,32 @@
                     <table class='thread-likes-dislikes-table'>
                       <tr>
                         <td>
-                          <img src='upward-arrow.png' width='30px' height='30px'>
+                          <div class='like-container'>
+                            <input type='hidden' class='hidden-field' value='".$row['id']."'>
+                            <img src='upward-arrow.png' width='30px' height='30px'>
+                            ";
+                        $query_likes="Select likes from `thread_view_likes` where `thread_id`=".$row['id']."";
+                        $result_of_likes=$link->query($query_likes);
+                        $likes_row=$result_of_likes->fetch_assoc();
+                        $query_dislikes="Select dislikes from `thread_view_dislikes` where `thread_id`=".$row['id']."";
+                        $result_of_dislikes=$link->query($query_dislikes);
+                        $dislikes_row=$result_of_dislikes->fetch_assoc();
+                        echo  "</div>
                         </td>
                       </tr>
                       <tr>
                         <td>
-                          ".((int)$row['likes']-(int)$row['dislikes'])."
+                          <div id='like-dislike-count".$row['id']."'>
+                          ".((int)$likes_row['likes']-(int)$dislikes_row['dislikes'])."
+                          </div>
                         </td>
                       </tr>
                       <tr>
                         <td>
+                        <div class='dislike-container'>
+                          <input type='hidden' class='hidden-field' value='".$row['id']."'>
                           <img src='downward-arrow.png' width='30px' height='30px'>
+                        </div>
                         </td>
                       </tr>
                     </table>

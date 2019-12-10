@@ -8,6 +8,23 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Forum</title>
   <link rel="stylesheet" type="text/css" href="common.css">
+  <script>
+    function showHint(str) {
+    if (str.length == 0) {
+        document.getElementById("txtHint").innerHTML = "";
+        return;
+    } else {
+        var xmlhttp = new XMLHttpRequest();
+        xmlhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+                document.getElementById("categoryHint").innerHTML = this.responseText;
+            }
+        }
+        xmlhttp.open("GET", "tagCategory.php?category="+str, true);
+        xmlhttp.send();
+    }
+}
+  </script>
 </head>
 </head>
 <body>
@@ -88,7 +105,8 @@
               <textarea class="q" placeholder="Enter Subject" name="subject" rows="15" required></textarea>
             </td></tr>
             <tr><td>
-              <input type = "text"  placeholder="Enter catergory" class="q" name="categoryList">
+              <input type = "text"  placeholder="Enter catergory" onkeyup="showHint(this.value)" class="q" name="categoryList">
+              <p>Suggestions: <span id="categoryHint"></span></p>
             </td></tr>
             <tr><td>
               <button type="submit" class="q" onclick="">Create</button>

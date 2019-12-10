@@ -125,7 +125,7 @@
       echo "</table>";
     echo "</div>";
     /*displaying threads*/
-    $sql1 = "SELECT `id`,`subject`,`created`,`user_id`,`likes`,`dislikes` FROM thread WHERE id='".$_GET['thread_Id']."' and status=0";
+    $sql1 = "SELECT `id`,`subject`,`created`,`user_id` FROM thread WHERE id='".$_GET['thread_Id']."' and status=0";
     $result1=$link->query($sql1);
     echo "<div class='content'>";
         echo "<div class='thread-view-container'>";
@@ -134,8 +134,15 @@
     if ($result1 && $result1->num_rows> 0) { 
       /*output data of the thread*/
           echo '<tr><td>Thread</td></tr>';
+          
       while($row = $result1->fetch_assoc()) {
-          echo "<tr><td>".$row['id']."<br>".$row['subject']."<br>".$row['created']."<br>".$row['user_id']."<br>".$row['likes']."<br>".$row['dislikes']."<br>"."</td></tr>";
+          $query_likes="Select likes from `thread_view_likes` where `thread_id`=".$row['id']."";
+          $result_of_likes=$link->query($query_likes);
+          $likes_row=$result_of_likes->fetch_assoc();
+          $query_dislikes="Select dislikes from `thread_view_dislikes` where `thread_id`=".$row['id']."";
+          $result_of_dislikes=$link->query($query_dislikes);
+          $dislikes_row=$result_of_dislikes->fetch_assoc();
+          echo "<tr><td>".$row['id']."<br>".$row['subject']."<br>".$row['created']."<br>".$row['user_id']."<br>".((int)$likes_row['likes']-(int)$dislikes_row['dislikes'])."<br>"."</td></tr>";
       }
       echo "</table>";
       echo "<table class='post-list-table'>";
